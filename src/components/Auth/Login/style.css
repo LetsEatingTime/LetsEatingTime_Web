@@ -1,0 +1,151 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+@media screen and (min-width: 600px) {
+    /* Desctop - Layout */
+    .form {
+        margin: auto;
+        width: 550px;
+        height: 800px;
+        background: #FFFFFF;
+        box-shadow: 1px 1px 20px rgba(183, 183, 183, 0.2);
+        border-radius: 10px;
+    }
+
+    .Ang-Text {
+        margin-top: 30px;
+
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 46px;
+        line-height: 135.5%;
+
+        color: #316AE2;
+    }
+
+    .input {
+        padding: 0 20px;
+        border: none;
+        width: 85%;
+        height: 73px;
+        background: #F5F5F5;
+        border-radius: 5px;
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .button {
+        border: none;
+        margin-top: 70px;
+        width: 92.5%;
+        height: 73px;
+        background: #316AE2;
+        color: #FFFFFF;
+        border-radius: 5px;
+        cursor: pointer;
+
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 135.5%;
+        text-align: center;
+    }
+
+    .button:active {
+        background: #585858;
+        cursor: pointer;
+    }
+
+    .Goto-Signin-Text {
+        margin-top: 20px;
+
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 135.5%;
+
+        color: #7A7A7A;
+    }
+
+    .Goto-Signin-Href {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #316AE2;
+    }
+}
+
+@media screen and (max-width: 750px) {
+
+    /* Mobile - Layout */
+    .form {
+        margin: auto;
+
+        width: 90%;
+        height: 700px;
+        background: #FFFFFF;
+        box-shadow: 1px 1px 20px rgba(183, 183, 183, 0.2);
+        border-radius: 10px;
+    }
+
+    .Ang-Text {
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 46px;
+        line-height: 135.5%;
+
+        color: #316AE2;
+    }
+
+    .input {
+        padding: 0 20px;
+        border: none;
+        width: 85%;
+        height: 50px;
+        background: #F5F5F5;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    .button {
+        border: none;
+        margin-top: 40px;
+        width: 90%;
+        height: 78px;
+        background: #316AE2;
+        border-radius: 5px;
+        color: #FFFFFF;
+
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 135.5%;
+        text-align: center;
+    }
+
+    .button:active {
+        background: #585858;
+        cursor: pointer;
+    }
+
+    .Goto-Signin-Text {
+        margin-top: 20px;
+
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 135.5%;
+
+        color: #7A7A7A;
+    }
+
+    .Goto-Signin-Href {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #316AE2;
+    }
+}
