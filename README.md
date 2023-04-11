@@ -1,3 +1,6 @@
+죄송합니다.
+`코드 이상하게 짬..ㅈㅅ`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

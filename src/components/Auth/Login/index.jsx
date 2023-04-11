@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
 
 import './style.css';
 import { ReactComponent as Reservation } from '../../../image/LoginLogo.svg';
@@ -15,11 +16,13 @@ const Flex = styled.div`
 `
 
 const Login = () => {
+    const navigate = useNavigate();
+
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2500,
         timerProgressBar: true,
         didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -44,12 +47,13 @@ const Login = () => {
             // 로그인 성공
             const response = await axios.post('http://10.80.161.45:8080/api/account/login.do', data);
             const { accessToken, refreshToken } = response.data;
-            document.cookie = `accessToken=${accessToken}`;
+            localStorage.setItem('accessToken', accessToken);
             document.cookie = `refreshToken=${refreshToken}`;
             Toast.fire({
                 icon: 'success',
                 title: '로그인 성공 !'
             })
+            navigate("/");
         } catch (error) {
             // 로그인 실패 
             Toast.fire({
