@@ -50,7 +50,10 @@ const Login = () => {
             const { accessToken, refreshToken } = response.data;
             localStorage.setItem('accessToken', accessToken);
             document.cookie = `refreshToken=${refreshToken}`;
-
+            Toast.fire({
+                icon: 'success',
+                title: '로그인 성공 !'
+            })
             navigate("/");
         } catch (error) {
             // 로그인 실패 

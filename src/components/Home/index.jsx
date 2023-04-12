@@ -2,7 +2,16 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Toast from '../lib/Alert/Toast';
-import Sidebar from '../SideBar/Sidebar';
+// import styled from 'styled-components';
+import NavBar from '../NavBar';
+
+// const Flex = styled.div`
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: column;
+//     height: 100vh;
+// `
 
 const Home = () => {
     const navigate = useNavigate();
@@ -23,10 +32,7 @@ const Home = () => {
                 const userType = response.data.userType;
                 if (userType === 'T') {
                     console.log("로그인 성공");
-                    Toast.fire({
-                        icon: 'success',
-                        title: '로그인 성공 !'
-                    })
+
                 }
                 else {
                     console.log("유효하지 않은 계정");
@@ -48,7 +54,7 @@ const Home = () => {
     }, [navigate]); // 빈 배열을 전달하여 컴포넌트가 처음 렌더링될 때만 실행
     return (
         <div>
-            <Sidebar />
+            <NavBar />
             <h1>Home Page</h1>
         </div>
     );
