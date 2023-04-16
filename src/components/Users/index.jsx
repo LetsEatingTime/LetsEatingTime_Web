@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
 
+import Style from '../../style/Users_style.module.css';
 import NavBar from '../NavBar';
 import Toast from '../lib/Alert/Toast';
 import { CheckLogin } from '../Auth/CheckLogin';
+
+const Flex = styled.div`
+    height: 100vh;
+`
 
 const Users = () => {
     const navigate = useNavigate();
@@ -28,8 +34,21 @@ const Users = () => {
     return (
         <div>
             <NavBar />
-            <h1>Users Page</h1>
+            <Flex>
+                <h1>학생목록</h1>
+                <button className={Style.btn} id='grade_1'>1학년</button>
+                <button className={Style.btn} id='grade_2'>2학년</button>
+                <button className={Style.btn} id='grade_3'>3학년</button>
+                <div className={Style.grade_1_text}>
+                    <h2>1학년</h2>
+                    <hr />
+                    <div className={Style.users}>
+                        {/* TODO 어떻게 유저들 넣을지 구상하기 */}
+                    </div>
+                </div>
+            </Flex>
         </div>
+
     );
 };
 

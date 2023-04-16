@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-import './style.css';
+import Style from '../../../style/Signup_style.module.css';
 import Toast from '../../lib/Alert/Toast';
+
+export const API_URL = process.env.REACT_APP_API;
 
 const Flex = styled.div`
 display: flex;
@@ -40,6 +42,8 @@ const SignUp = () => {
     }
 
     const handleSignin = async () => {
+        const URL = `${API_URL}/api/account/signup.do`;
+
         if (id === '' || password === '' || name === '') {
             Toast.fire({
                 icon: 'error',
@@ -57,7 +61,7 @@ const SignUp = () => {
         };
         try {
             // 회원가입 성공
-            const response = await axios.post('http://10.80.161.45:8080/api/account/signup.do', data) // 회원가입 API
+            const response = await axios.post(URL, data) // 회원가입 API
             // console.log(response);
             if (response.status === 200) {
                 Toast.fire({
@@ -95,17 +99,17 @@ const SignUp = () => {
         <div>
             <div>
                 <Flex>
-                    <form className='form' onKeyPress={onKeyPress}>
-                        <div className='Ang-Text'>회원가입</div>
+                    <form className={Style.form} onKeyPress={onKeyPress}>
+                        <div className={Style.Ang_Text}>회원가입</div>
                         {/* <Reservation /> */}
-                        <div className='inputs'>
-                            <input className='input' type='text' id='input-id' placeholder='Username' value={id} onChange={handleIdChange}></input>
-                            <input className='input' type='password' id='input-pw' placeholder='Password' value={password} onChange={handlePasswordChange}></input>
-                            <input className='input' type='text' id='input-name' placeholder='Name' value={name} onChange={handleNameChange}></input>
+                        <div className={Style.inputs}>
+                            <input className={Style.input} type='text' id='input-id' placeholder='Username' value={id} onChange={handleIdChange}></input>
+                            <input className={Style.input} type='password' id='input-pw' placeholder='Password' value={password} onChange={handlePasswordChange}></input>
+                            <input className={Style.input} type='text' id='input-name' placeholder='Name' value={name} onChange={handleNameChange}></input>
                         </div>
-                        <button className='button' type='button' onClick={handleSignin}>회원가입</button>
-                        <div className='Goto-Signup-Text'>회원이신가요 ?&nbsp;
-                            <span className='Goto-Signup-Href' onClick={() => { navigate('/login') }}>로그인</span>
+                        <button className={Style.button} type='button' onClick={handleSignin}>회원가입</button>
+                        <div className={Style.Goto_Signup_Text}>회원이신가요 ?&nbsp;
+                            <span className={Style.Goto_Signup_Href} onClick={() => { navigate('/login') }}>로그인</span>
                         </div>
                     </form>
                 </Flex>

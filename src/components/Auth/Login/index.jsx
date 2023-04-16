@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
+import Style from '../../../style/Login_style.module.css';
 import Toast from '../../lib/Alert/Toast';
-import './style.css';
 import { ReactComponent as Reservation } from '../../../image/LoginLogo.svg';
+
+export const API_URL = process.env.REACT_APP_API;
 
 const Flex = styled.div`
     display: flex;
@@ -36,6 +38,8 @@ const Login = () => {
     }
 
     const handleLogin = async () => {
+        const URL = `${API_URL}/api/account/login.do`;
+
         if (id === '' || password === '') {
             Toast.fire({
                 icon: 'error',
@@ -46,7 +50,7 @@ const Login = () => {
         const data = { id, password };
         try {
             // 로그인 성공
-            const response = await axios.post('http://10.80.161.45:8080/api/account/login.do', data);
+            const response = await axios.post(URL, data);
             const { accessToken, refreshToken } = response.data;
             localStorage.setItem('accessToken', accessToken);
             document.cookie = `refreshToken=${refreshToken}`;
@@ -68,14 +72,14 @@ const Login = () => {
     return (
         <div>
             <Flex>
-                <form className='form' onKeyPress={onKeyPress}>
-                    <div className='Ang-Text'>로그인</div>
+                <form className={Style.form} onKeyPress={onKeyPress}>
+                    <div className={Style.Ang_Text}>로그인</div>
                     <Reservation />
-                    <input className='input' type='text' id='input-id' placeholder='Username' value={id} onChange={handleIdChange}></input>
-                    <input className='input' type='password' id='input-pw' placeholder='Password' value={password} onChange={handlePasswordChange}></input>
-                    <button className='button' type='button' onClick={handleLogin}>로그인</button>
-                    <div className='Goto-Signin-Text'>아직 회원이 아니신가요?&nbsp;
-                        <span className='Goto-Signin-Href' onClick={() => { navigate('/signup') }}>회원가입</span>
+                    <input className={Style.input} type='text' id='input-id' placeholder='Username' value={id} onChange={handleIdChange}></input>
+                    <input className={Style.input} type='password' id='input-pw' placeholder='Password' value={password} onChange={handlePasswordChange}></input>
+                    <button className={Style.button} type='button' onClick={handleLogin}>로그인</button>
+                    <div className={Style.Goto_Signin_Text}>아직 회원이 아니신가요?&nbsp;
+                        <span className={Style.Goto_Signin_Href} onClick={() => { navigate('/signup') }}>회원가입</span>
                     </div>
                 </form>
             </Flex>

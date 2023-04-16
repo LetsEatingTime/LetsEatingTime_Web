@@ -73,12 +73,14 @@
 
 /* ----------------------------------------- */
 
+/* TODO 헴버거바 버그 고치기 */
+
 /* hambuger-menu bar */
-#check_box {
+.checkbox {
     display: none;
 }
 
-#check_box+label {
+.checkbox+label {
     float: right;
     margin: 20px auto;
     margin-right: 30px;
@@ -89,7 +91,7 @@
     cursor: pointer;
 }
 
-#check_box+label>span {
+.checkbox+label>span {
     position: absolute;
     display: block;
     width: 100%;
@@ -99,32 +101,32 @@
     transition: all 300ms;
 }
 
-#check_box:checked+label>span:nth-child(1) {
+.checkbox:checked+label>span:nth-child(1) {
     top: 50%;
     transform: translate(0, -50%);
     transform: rotate(45deg);
 }
 
-#check_box+label>span:nth-child(2) {
+.checkbox+label>span:nth-child(2) {
     top: 50%;
     transform: translate(0, -50%);
 }
 
-#check_box:checked+label>span:nth-child(2) {
+.checkbox:checked+label>span:nth-child(2) {
     opacity: 0;
 }
 
-#check_box+label>span:nth-child(3) {
+.checkbox+label>span:nth-child(3) {
     bottom: 0;
 }
 
-#check_box:checked+label>span:nth-child(3) {
+.checkbox:checked+label>span:nth-child(3) {
     top: 50%;
     transform: translate(0, -50%);
     transform: rotate(-45deg);
 }
 
-#check_box+label {
+.checkbox+label {
     position: relative;
     display: block;
     width: 60px;
@@ -135,7 +137,7 @@
 }
 
 /* right-menu-css */
-#side_menu {
+.side_menu {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -148,7 +150,7 @@
     box-sizing: border-box;
 }
 
-#check_box:checked+label+#side_menu {
+.checkbox:checked+label+.side_menu {
     right: 0;
 }
 

@@ -11,7 +11,7 @@
         border-radius: 10px;
     }
 
-    .Ang-Text {
+    .Ang_Text {
         margin-top: 30px;
 
         font-family: 'Pretendard';
@@ -57,7 +57,7 @@
         cursor: pointer;
     }
 
-    .Goto-Signin-Text {
+    .Goto_Signup_Text {
         margin-top: 20px;
 
         font-family: 'Pretendard';
@@ -69,10 +69,14 @@
         color: #7A7A7A;
     }
 
-    .Goto-Signin-Href {
+    .Goto_Signup_Href {
         cursor: pointer;
         text-decoration: underline;
         color: #316AE2;
+    }
+
+    .inputs {
+        margin-top: 100px;
     }
 }
 
@@ -89,7 +93,7 @@
         border-radius: 10px;
     }
 
-    .Ang-Text {
+    .Ang_Text {
         font-family: 'Pretendard';
         font-style: normal;
         font-weight: 900;
@@ -131,7 +135,7 @@
         cursor: pointer;
     }
 
-    .Goto-Signin-Text {
+    .Goto_Signup_Text {
         margin-top: 20px;
 
         font-family: 'Pretendard';
@@ -143,9 +147,13 @@
         color: #7A7A7A;
     }
 
-    .Goto-Signin-Href {
+    .Goto_Signup_Href {
         cursor: pointer;
         text-decoration: underline;
         color: #316AE2;
+    }
+
+    .inputs {
+        margin-top: 100px;
     }
 }
