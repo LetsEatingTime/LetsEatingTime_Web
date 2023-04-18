@@ -19,7 +19,7 @@ function NavBar() {
                         <Link to="/chatings" className='clicker'>잡담</Link> |{" "}
                         <Link to="/profile" className='clicker'>내 - 프로필</Link> */}
                     </div>
-                    <div className={Style.HambugerMenu}>
+                    {/* <div className={Style.HambugerMenu}>
                         <input type="checkbox" className={Style.check_box} />
                         <label for="check_box">
                             <span></span>
@@ -31,13 +31,12 @@ function NavBar() {
                                 <Link to="/" className={Style.BlockText}>
                                     <div className={Style.HambugerClicker}>홈</div>
                                 </Link>
-                                {/* <br /> */}
                                 <Link to="/users" className={Style.BlockText}>
                                     <div className={Style.HambugerClicker}>유저목록</div>
                                 </Link>
                             </ul>
                         </div>
-                    </div>
+                    </div> */}
                 </nav>
             </header>
         </div>

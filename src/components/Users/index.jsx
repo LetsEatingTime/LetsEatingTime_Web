@@ -9,6 +9,9 @@ import { CheckLogin } from '../Auth/CheckLogin';
 
 const Flex = styled.div`
     height: 100vh;
+    /* justify-content: center;
+    align-items: center;
+    flex-direction: column; */
 `
 
 const Users = () => {
@@ -26,7 +29,15 @@ const Users = () => {
                         title: '유효하지 않은 게정입니다 !'
                     });
                     localStorage.removeItem('accessToken');
-                    document.cookie = 'refreshToken=; expires=Thu, 01 Jan 1999 00:00:10 GMT;;';
+
+                    let date = new Date();
+                    date.setDate(date.getDate() - 1);
+
+                    let willCookie = "";
+                    willCookie += "refreshToken=Value;";
+                    willCookie += "Expires=" + date.toUTCString();
+                    document.cookie = willCookie;
+
                     navigate('/login');
                 }
             });
@@ -41,10 +52,44 @@ const Users = () => {
                 <button className={Style.btn} id='grade_3'>3학년</button>
                 <div className={Style.grade_1_text}>
                     <h2>1학년</h2>
-                    <hr />
+                    <hr className={Style.hr}/>
                     <div className={Style.users}>
-                        {/* TODO 어떻게 유저들 넣을지 구상하기 */}
+                        <div className={Style.user}>
+                            <span>유저1</span>
+                        </div>
+                        <div className={Style.user}>
+                            
+                            <span>유저1</span>
+                        </div>
                     </div>
+                </div>
+                <div className={Style.grade_1_text}>
+                    <h2>2학년</h2>
+                    <hr className={Style.hr}/>
+                    <div className={Style.users}>
+                        <div className={Style.user}>
+                            <span>유저1</span>
+                        </div>
+                        <div className={Style.user}>
+                            
+                            <span>유저1</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div className={Style.grade_1_text}>
+                    <h2>3학년</h2>
+                    <hr className={Style.hr}/>
+                    <div className={Style.users}>
+                        <div className={Style.user}>
+                            <span>유저1</span>
+                        </div>
+                        <div className={Style.user}>
+                            
+                            <span>유저1</span>
+                        </div>
+                    </div>
+
                 </div>
             </Flex>
         </div>

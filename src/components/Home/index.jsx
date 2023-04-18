@@ -29,7 +29,15 @@ const Home = () => {
                         title: '유효하지 않은 게정입니다 !'
                     });
                     localStorage.removeItem('accessToken');
-                    document.cookie = 'refreshToken=; path=/;';
+
+                    let date = new Date();
+                    date.setDate(date.getDate() - 1);
+            
+                    let willCookie = "";
+                    willCookie += "refreshToken=Value;";
+                    willCookie += "Expires=" + date.toUTCString();
+                    document.cookie = willCookie;
+                    
                     navigate('/login');
                 }
             });
