@@ -5,6 +5,7 @@ import Toast from '../lib/Alert/Toast';
 // import styled from 'styled-components';
 import NavBar from '../NavBar';
 import { CheckLogin } from '../Auth/CheckLogin';
+import Piechart from '../Chart/Pie';
 
 // const Flex = styled.div`
 //     display: flex;
@@ -32,12 +33,12 @@ const Home = () => {
 
                     let date = new Date();
                     date.setDate(date.getDate() - 1);
-            
+
                     let willCookie = "";
                     willCookie += "refreshToken=Value;";
                     willCookie += "Expires=" + date.toUTCString();
                     document.cookie = willCookie;
-                    
+
                     navigate('/login');
                 }
             });
@@ -46,6 +47,7 @@ const Home = () => {
         <div>
             <NavBar />
             <h1>Home Page</h1>
+            <Piechart />
         </div>
     );
 };

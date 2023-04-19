@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -6,6 +6,7 @@ import Style from '../../style/Users_style.module.css';
 import NavBar from '../NavBar';
 import Toast from '../lib/Alert/Toast';
 import { CheckLogin } from '../Auth/CheckLogin';
+import UserList from '../../hooks/UserList';
 
 const Flex = styled.div`
     height: 100vh;
@@ -16,6 +17,8 @@ const Flex = styled.div`
 
 const Users = () => {
     const navigate = useNavigate();
+    const [data, setData] = useState([]);
+
     useEffect(() => {
         const accessToken = localStorage.getItem('accessToken');
         CheckLogin(accessToken)
@@ -41,6 +44,16 @@ const Users = () => {
                     navigate('/login');
                 }
             });
+        // const userlist = UserList(accessToken)
+        UserList(accessToken)
+            .then(data => {
+                setData(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        // console.log(Userlist.name)
     }, [navigate]); // 빈 배열을 전달하여 컴포넌트가 처음 렌더링될 때만 실행
     return (
         <div>
@@ -52,26 +65,24 @@ const Users = () => {
                 <button className={Style.btn} id='grade_3'>3학년</button>
                 <div className={Style.grade_1_text}>
                     <h2>1학년</h2>
-                    <hr className={Style.hr}/>
+                    <hr className={Style.hr} />
                     <div className={Style.users}>
-                        <div className={Style.user}>
-                            <span>유저1</span>
-                        </div>
-                        <div className={Style.user}>
-                            
-                            <span>유저1</span>
-                        </div>
+                        {data.map((user, index) => (
+                            <div className={Style.user} key={index}>
+                                <span>{user.name}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div className={Style.grade_1_text}>
                     <h2>2학년</h2>
-                    <hr className={Style.hr}/>
+                    <hr className={Style.hr} />
                     <div className={Style.users}>
                         <div className={Style.user}>
                             <span>유저1</span>
                         </div>
                         <div className={Style.user}>
-                            
+
                             <span>유저1</span>
                         </div>
                     </div>
@@ -79,13 +90,13 @@ const Users = () => {
                 </div>
                 <div className={Style.grade_1_text}>
                     <h2>3학년</h2>
-                    <hr className={Style.hr}/>
+                    <hr className={Style.hr} />
                     <div className={Style.users}>
                         <div className={Style.user}>
                             <span>유저1</span>
                         </div>
                         <div className={Style.user}>
-                            
+
                             <span>유저1</span>
                         </div>
                     </div>
