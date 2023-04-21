@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 import Style from '../../../style/Login_style.module.css';
-import Toast from '../../lib/Alert/Toast';
+import Toast from '../../../lib/Alert/Toast';
 import { ReactComponent as Reservation } from '../../../image/LoginLogo.svg';
 
 export const API_URL = process.env.REACT_APP_API;

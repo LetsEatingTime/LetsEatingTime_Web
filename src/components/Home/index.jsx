@@ -1,19 +1,11 @@
 import React, { useEffect } from 'react';
-// import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import Toast from '../lib/Alert/Toast';
-// import styled from 'styled-components';
+
+import Toast from '../../lib/Alert/Toast';
 import NavBar from '../NavBar';
-import { CheckLogin } from '../Auth/CheckLogin';
+import { CheckLogin } from '../../hooks/CheckLogin';
 import Piechart from '../Chart/Pie';
 
-// const Flex = styled.div`
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     flex-direction: column;
-//     height: 100vh;
-// `
 
 const Home = () => {
     const navigate = useNavigate();

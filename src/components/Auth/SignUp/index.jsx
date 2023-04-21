@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 import Style from '../../../style/Signup_style.module.css';
-import Toast from '../../lib/Alert/Toast';
+import Toast from '../../../lib/Alert/Toast';
 
 export const API_URL = process.env.REACT_APP_API;
 
