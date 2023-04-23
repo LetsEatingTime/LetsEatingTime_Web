@@ -53,11 +53,11 @@ const Users = () => {
             .then(data => {
                 data.forEach((item) => {
                     if (item.grade === 1) {
-                        grade1.push(item);
+                        grade1.push(item)
                     } else if (item.grade === 2) {
-                        grade2.push(item);
+                        grade2.push(item)
                     } else if (item.grade === 3) {
-                        grade3.push(item);
+                        grade3.push(item)
                     }
                 });
 

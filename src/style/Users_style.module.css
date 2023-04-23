@@ -28,7 +28,7 @@ div {
 }
 
 .users {
-    width: 80%;
+    width: 60%;
 
 
     margin: 0 auto;
@@ -44,7 +44,7 @@ div {
 }
 
 .hr {
-    width: 80%;
+    width: 60%;
     height: 2px;
     border: none;
     background-color: black;
