@@ -51,7 +51,7 @@ const Login = () => {
         try {
             // 로그인 성공
             const response = await axios.post(URL, data);
-            const { accessToken, refreshToken } = response.data;
+            const { accessToken, refreshToken } = response.data.data;
             localStorage.setItem('accessToken', accessToken);
             document.cookie = `refreshToken=${refreshToken}`;
             Toast.fire({

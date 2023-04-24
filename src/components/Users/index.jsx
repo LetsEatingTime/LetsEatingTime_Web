@@ -86,7 +86,7 @@ const Users = () => {
                         <div className={Style.users}>
                             {data_grade1.map((user, index) => (
                                 <div className={Style.user} key={index}>
-                                    <span>{user.grade}학년 {user.className}반 {user.classNo}번 {user.name}</span>
+                                    <span className={Style.username}>{user.grade}학년 {user.className}반 {user.classNo}번 {user.name}</span>
                                 </div>
                             ))}
                         </div>
@@ -97,7 +97,7 @@ const Users = () => {
                         <div className={Style.users}>
                             {data_grade2.map((user, index) => (
                                 <div className={Style.user} key={index}>
-                                    <span>{user.grade}학년 {user.className}반 {user.classNo}번 {user.name}</span>
+                                    <span className={Style.username}>{user.grade}학년 {user.className}반 {user.classNo}번 {user.name}</span>
                                 </div>
                             ))}
                         </div>
@@ -109,7 +109,7 @@ const Users = () => {
                         <div className={Style.users}>
                             {data_grade3.map((user, index) => (
                                 <div className={Style.user} key={index}>
-                                    <span>{user.grade}학년 {user.className}반 {user.classNo}번 {user.name}</span>
+                                    <span className={Style.username}>{user.grade}학년 {user.className}반 {user.classNo}번 {user.name}</span>
                                 </div>
                             ))}
                         </div>

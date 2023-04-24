@@ -10,7 +10,7 @@ export const CheckLogin = async (accessToken) => {
         'Authorization': `Bearer ${accessToken}`,
       }
     });
-    const userType = response.data.userType;
+    const userType = response.data.data.userType;
     return userType === 'T';
   } catch (error) {
     console.error(error);

@@ -1,11 +1,20 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
 
 import Toast from '../../lib/Alert/Toast';
 import NavBar from '../NavBar';
 import { CheckLogin } from '../../hooks/CheckLogin';
 import Piechart from '../Chart/Pie';
+import Meal from '../Meal';
 
+const Flex = styled.div`
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    /* align-items: center; */
+`
 
 const Home = () => {
     const navigate = useNavigate();
@@ -39,7 +48,12 @@ const Home = () => {
         <div>
             <NavBar />
             <h1>Home Page</h1>
-            <Piechart />
+            <div>
+                <Flex>
+                    <Meal />
+                    <Piechart />
+                </Flex>
+            </div>
         </div>
     );
 };

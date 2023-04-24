@@ -12,7 +12,7 @@ const Piechart = () => {
     };
 
     return (
-        <div style={{ width: '800px', height: '500px', margin: '0 auto' }}>
+        <div style={{ width: '420px', height: '420px' }}>
             <ResponsivePie
                 data={[
                     { id: '이찬혁', value: 324 },

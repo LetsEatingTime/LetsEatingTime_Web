@@ -10,7 +10,7 @@ const UserList = async (accessToken) => {
             }
         });
         // console.log(response.data)
-        const data = response.data
+        const data = response.data.data
         return data
     } catch (error) {
         console.error(error);

@@ -29,8 +29,6 @@ div {
 
 .users {
     width: 60%;
-
-
     margin: 0 auto;
 }
 
@@ -49,4 +47,33 @@ div {
     border: none;
     background-color: black;
     border-radius: 3px;
+}
+
+.username {
+    margin-left: 30px;
+    margin-top: 28px;
+    font-weight: bold;
+    /* font-weight: 400; */
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+
+    float: left;
+
+}
+
+@media screen and (max-width: 750px) {
+    /* Mobile - Layout */
+    .users {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .hr {
+        width: 80%;
+        height: 2px;
+        border: none;
+        background-color: black;
+        border-radius: 3px;
+    }
 }
