@@ -10,8 +10,15 @@ const UserList = async (accessToken) => {
             }
         });
         // console.log(response.data)
-        const data = response.data.data
-        return data
+        const data = response.data
+        // console.log(data)
+        if(data.status === 200) {
+            const users = data.data;
+            // console.log(users)
+            return users;
+        } else {
+            console.log('서버 에러');
+        }
     } catch (error) {
         console.error(error);
     }

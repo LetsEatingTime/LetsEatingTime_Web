@@ -12,3 +12,16 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
+
+pre {
+
+    font-family: 'Basic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: center;
+
+    color: #000000;
+
+}

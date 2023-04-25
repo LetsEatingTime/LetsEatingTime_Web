@@ -29,13 +29,12 @@ const Meal = () => {
         const URL = `${API_URL}/openapi/meal?date=${today}`;
         axios.post(URL)
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 const mealRequest = response.data;
                 if (mealRequest.status === 200) {
                     const mealToday = mealRequest.data;
                     if (mealToday) {
-                        console.log(mealToday.breakfast.menu);
-
+                        // console.log(mealToday.breakfast.menu);
                         setBreakfast(mealToday.breakfast.menu.join('\n'));
                         setLunch(mealToday.lunch.menu.join('\n'));
                         setDinner(mealToday.dinner.menu.join('\n'));

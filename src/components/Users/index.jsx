@@ -50,13 +50,14 @@ const Users = () => {
         const grade2 = [];
         const grade3 = [];
         UserList(accessToken)
-            .then(data => {
-                data.forEach((item) => {
-                    if (item.grade === 1) {
+            .then(users => {
+                // console.log(users)
+                users.forEach((item) => {
+                    if (item.user.grade === 1) {
                         grade1.push(item)
-                    } else if (item.grade === 2) {
+                    } else if (item.user.grade === 2) {
                         grade2.push(item)
-                    } else if (item.grade === 3) {
+                    } else if (item.user.grade === 3) {
                         grade3.push(item)
                     }
                 });
@@ -86,7 +87,8 @@ const Users = () => {
                         <div className={Style.users}>
                             {data_grade1.map((user, index) => (
                                 <div className={Style.user} key={index}>
-                                    <span className={Style.username}>{user.grade}학년 {user.className}반 {user.classNo}번 {user.name}</span>
+                                    <span className={Style.username}>{user.user.grade}학년 {user.user.className}반 {user.user.classNo}번 {user.user.name}</span>
+                                    {/* <div className={Style.meal_status}>{ user }</div> */}
                                 </div>
                             ))}
                         </div>
@@ -97,7 +99,7 @@ const Users = () => {
                         <div className={Style.users}>
                             {data_grade2.map((user, index) => (
                                 <div className={Style.user} key={index}>
-                                    <span className={Style.username}>{user.grade}학년 {user.className}반 {user.classNo}번 {user.name}</span>
+                                    <span className={Style.username}>{user.user.grade}학년 {user.user.className}반 {user.user.classNo}번 {user.user.name}</span>
                                 </div>
                             ))}
                         </div>
@@ -109,7 +111,7 @@ const Users = () => {
                         <div className={Style.users}>
                             {data_grade3.map((user, index) => (
                                 <div className={Style.user} key={index}>
-                                    <span className={Style.username}>{user.grade}학년 {user.className}반 {user.classNo}번 {user.name}</span>
+                                    <span className={Style.username}>{user.user.grade}학년 {user.user.className}반 {user.user.classNo}번 {user.user.name}</span>
                                 </div>
                             ))}
                         </div>

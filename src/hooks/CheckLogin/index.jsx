@@ -10,8 +10,13 @@ export const CheckLogin = async (accessToken) => {
         'Authorization': `Bearer ${accessToken}`,
       }
     });
-    const userType = response.data.data.userType;
-    return userType === 'T';
+    const userData = response.data;
+    if(userData.status === 200) {
+      const userType = response.data.data.user.userType;
+      return userType === 'T';
+    } else {
+      console.log('서버 에러');
+    }
   } catch (error) {
     console.error(error);
     return false;
