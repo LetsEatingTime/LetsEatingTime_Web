@@ -33,13 +33,19 @@ const Meal = () => {
                 const mealRequest = response.data;
                 if (mealRequest.status === 200) {
                     const mealToday = mealRequest.data;
-                    if (mealToday) {
+                    // console.log(mealToday)
+                    if (mealToday.exists) {
                         // console.log(mealToday.breakfast.menu);
-                        setBreakfast(mealToday.breakfast.menu.join('\n'));
-                        setLunch(mealToday.lunch.menu.join('\n'));
-                        setDinner(mealToday.dinner.menu.join('\n'));
+                        const breakfastData = (`${mealToday.breakfast ? mealToday.breakfast.menu.join('\n') : '아침이 없습니다.'}`);
+                        const lunchData = (`${mealToday.lunch ? mealToday.lunch.menu.join('\n') : '점심이 없습니다.'}`);
+                        const dinnerData = (`${mealToday.dinner ? mealToday.dinner.menu.join('\n') : '저녁이 없습니다.'}`);
+                        setBreakfast(breakfastData);
+                        setLunch(lunchData);
+                        setDinner(dinnerData);
                     } else {
-                        console.log('급식이 없습니다.');
+                        setBreakfast('아침이 없습니다.');
+                        setLunch('점심이 없습니다.');
+                        setDinner('저녁이 없습니다.');
                     }
                 } else {
                     console.log('서버 에러');
