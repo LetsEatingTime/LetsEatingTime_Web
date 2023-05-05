@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 import Loading from "../components/Loading";
+import UserDetail from "../components/UserDetail";
 
 const Login = lazy(() => import("../components/Auth/Login"));
 const SignUp = lazy(() => import("../components/Auth/SignUp"));
@@ -17,6 +18,7 @@ const Router = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/users" element={<Users />} />
+                <Route path="/user" element={<UserDetail />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Suspense>

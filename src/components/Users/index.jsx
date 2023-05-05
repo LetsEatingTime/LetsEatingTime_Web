@@ -71,6 +71,16 @@ const Users = () => {
 
         // console.log(Userlist.name)
     }, [navigate]); // 빈 배열을 전달하여 컴포넌트가 처음 렌더링될 때만 실행
+
+    const handleUserClick = async (e) => {
+        const UserId = await e.target.id;
+        // console.log(UserId);
+        navigate("/user", {
+            state: { UserId: UserId },
+            replace: true,
+        });
+    };
+
     return (
         <div>
             <NavBar />
@@ -91,7 +101,12 @@ const Users = () => {
                         <hr className={Style.hr} />
                         <div className={Style.users}>
                             {data_grade1.map((user, index) => (
-                                <div className={Style.user} key={index}>
+                                <div
+                                    className={Style.user}
+                                    key={index}
+                                    onClick={handleUserClick}
+                                    id={user.user.id}
+                                >
                                     <span className={Style.username}>
                                         {user.user.grade}학년{" "}
                                         {user.user.className}반{" "}
@@ -107,7 +122,12 @@ const Users = () => {
                         <hr className={Style.hr} />
                         <div className={Style.users}>
                             {data_grade2.map((user, index) => (
-                                <div className={Style.user} key={index}>
+                                <div
+                                    className={Style.user}
+                                    key={index}
+                                    onClick={handleUserClick}
+                                    id={user.user.id}
+                                >
                                     <span className={Style.username}>
                                         {user.user.grade}학년{" "}
                                         {user.user.className}반{" "}
@@ -122,7 +142,12 @@ const Users = () => {
                         <hr className={Style.hr} />
                         <div className={Style.users}>
                             {data_grade3.map((user, index) => (
-                                <div className={Style.user} key={index}>
+                                <div
+                                    className={Style.user}
+                                    key={index}
+                                    onClick={handleUserClick}
+                                    id={user.user.id}
+                                >
                                     <span className={Style.username}>
                                         {user.user.grade}학년{" "}
                                         {user.user.className}반{" "}

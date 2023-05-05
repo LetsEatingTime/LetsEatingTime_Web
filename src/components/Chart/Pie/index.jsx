@@ -22,7 +22,7 @@ const Piechart = () => {
             .get(URL)
             .then((response) => {
                 const data = response.data.data;
-                console.log(data);
+                // console.log(data);
                 setData(data);
             })
             .catch((error) => {
