@@ -52,16 +52,17 @@ const UserDetail = (props) => {
         <div>
             {userData ? (
                 <div>
-                    <div className={Style.card}>faosfhjasfaff</div>
-                    <h1>{userData.user.name}</h1>
-                    <p>학년: {userData.user.grade}</p>
-                    <p>반: {userData.user.className}</p>
-                    <p>번호: {userData.user.classNo}</p>
-                    <span>아침: {breakfast ? <>✅</> : <>❌</>}</span>
-                    <br />
-                    <span>점심: {lunch ? <>✅</> : <>❌</>}</span>
-                    <br />
-                    <span>저녁: {dinner ? <>✅</> : <>❌</>}</span>
+                    <div className={Style.card}>
+                        <h1>{userData.user.name}</h1>
+                        <p>학년: {userData.user.grade}</p>
+                        <p>반: {userData.user.className}</p>
+                        <p>번호: {userData.user.classNo}</p>
+                        <span>아침: {breakfast ? <>✅</> : <>❌</>}</span>
+                        <br />
+                        <span>점심: {lunch ? <>✅</> : <>❌</>}</span>
+                        <br />
+                        <span>저녁: {dinner ? <>✅</> : <>❌</>}</span>
+                    </div>
                 </div>
             ) : (
                 <p>Loading...</p>

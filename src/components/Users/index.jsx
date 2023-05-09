@@ -52,12 +52,14 @@ const Users = () => {
             .then((users) => {
                 // console.log(users)
                 users.forEach((item) => {
-                    if (item.user.grade === 1) {
-                        grade1.push(item);
-                    } else if (item.user.grade === 2) {
-                        grade2.push(item);
-                    } else if (item.user.grade === 3) {
-                        grade3.push(item);
+                    if (item.user.approvedYn === "Y") {
+                        if (item.user.grade === 1) {
+                            grade1.push(item);
+                        } else if (item.user.grade === 2) {
+                            grade2.push(item);
+                        } else if (item.user.grade === 3) {
+                            grade3.push(item);
+                        }
                     }
                 });
 
