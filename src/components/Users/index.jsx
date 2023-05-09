@@ -108,8 +108,7 @@ const Users = () => {
                                     id={user.user.id}
                                 >
                                     <span className={Style.username}>
-                                        {user.user.grade}학년{" "}
-                                        {user.user.className}반{" "}
+                                        {user.user.grade}학년 {user.user.className}반{" "}
                                         {user.user.classNo}번 {user.user.name}
                                     </span>
                                     {/* <div className={Style.meal_status}>{ user }</div> */}
@@ -129,8 +128,7 @@ const Users = () => {
                                     id={user.user.id}
                                 >
                                     <span className={Style.username}>
-                                        {user.user.grade}학년{" "}
-                                        {user.user.className}반{" "}
+                                        {user.user.grade}학년 {user.user.className}반{" "}
                                         {user.user.classNo}번 {user.user.name}
                                     </span>
                                 </div>
@@ -149,8 +147,7 @@ const Users = () => {
                                     id={user.user.id}
                                 >
                                     <span className={Style.username}>
-                                        {user.user.grade}학년{" "}
-                                        {user.user.className}반{" "}
+                                        {user.user.grade}학년 {user.user.className}반{" "}
                                         {user.user.classNo}번 {user.user.name}
                                     </span>
                                 </div>

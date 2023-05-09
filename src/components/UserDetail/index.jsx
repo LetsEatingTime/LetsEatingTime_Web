@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
+import Style from "../../style/UserDetail_style.module.css";
+
 export const API_URL = process.env.REACT_APP_API;
 
 const UserDetail = (props) => {
@@ -38,7 +40,7 @@ const UserDetail = (props) => {
         };
         user().then((data) => {
             setUserData(data);
-            const mealTime = (data.mealTime);
+            const mealTime = data.mealTime;
             mealTime.includes("breakfast") ? setBreakfast(true) : setBreakfast(false);
             mealTime.includes("lunch") ? setLunch(true) : setLunch(false);
             mealTime.includes("dinner") ? setDinner(true) : setDinner(false);
@@ -50,6 +52,7 @@ const UserDetail = (props) => {
         <div>
             {userData ? (
                 <div>
+                    <div className={Style.card}>faosfhjasfaff</div>
                     <h1>{userData.user.name}</h1>
                     <p>학년: {userData.user.grade}</p>
                     <p>반: {userData.user.className}</p>

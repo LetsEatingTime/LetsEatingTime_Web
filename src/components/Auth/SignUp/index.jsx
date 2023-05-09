@@ -126,11 +126,7 @@ const SignUp = () => {
                                 onChange={handleNameChange}
                             ></input>
                         </div>
-                        <button
-                            className={Style.button}
-                            type="button"
-                            onClick={handleSignin}
-                        >
+                        <button className={Style.button} type="button" onClick={handleSignin}>
                             회원가입
                         </button>
                         <div className={Style.Goto_Signup_Text}>

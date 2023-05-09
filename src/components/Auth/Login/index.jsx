@@ -91,11 +91,7 @@ const Login = () => {
                         value={password}
                         onChange={handlePasswordChange}
                     ></input>
-                    <button
-                        className={Style.button}
-                        type="button"
-                        onClick={handleLogin}
-                    >
+                    <button className={Style.button} type="button" onClick={handleLogin}>
                         로그인
                     </button>
                     <div className={Style.Goto_Signin_Text}>

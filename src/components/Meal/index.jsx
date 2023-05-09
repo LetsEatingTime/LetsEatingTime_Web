@@ -41,14 +41,10 @@ const Meal = () => {
                                 : "아침이 없습니다."
                         }`;
                         const lunchData = `${
-                            mealToday.lunch
-                                ? mealToday.lunch.menu.join("\n")
-                                : "점심이 없습니다."
+                            mealToday.lunch ? mealToday.lunch.menu.join("\n") : "점심이 없습니다."
                         }`;
                         const dinnerData = `${
-                            mealToday.dinner
-                                ? mealToday.dinner.menu.join("\n")
-                                : "저녁이 없습니다."
+                            mealToday.dinner ? mealToday.dinner.menu.join("\n") : "저녁이 없습니다."
                         }`;
                         setBreakfast(breakfastData);
                         setLunch(lunchData);
