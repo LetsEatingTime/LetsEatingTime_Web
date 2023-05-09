@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { Link } from "react-scroll";
 
 import Style from "../../style/Users_style.module.css";
 import NavBar from "../NavBar";
@@ -89,16 +90,16 @@ const Users = () => {
             <div className={Style.Nav_Legend}>
                 <Flex>
                     <h1>학생목록</h1>
-                    <button className={Style.btn} id="grade_1">
-                        1학년
-                    </button>
-                    <button className={Style.btn} id="grade_2">
-                        2학년
-                    </button>
-                    <button className={Style.btn} id="grade_3">
-                        3학년
-                    </button>
-                    <div className={Style.grade_1_text}>
+                    <Link to="grade_1" spy={true} smooth={true}>
+                        <button className={Style.btn}>1학년</button>
+                    </Link>
+                    <Link to="grade_2" spy={true} smooth={true}>
+                        <button className={Style.btn}>2학년</button>
+                    </Link>
+                    <Link to="grade_3" spy={true} smooth={true}>
+                        <button className={Style.btn}>3학년</button>
+                    </Link>
+                    <div className={Style.grade_text} id="grade_1">
                         <h2>1학년</h2>
                         <hr className={Style.hr} />
                         <div className={Style.users}>
@@ -118,10 +119,10 @@ const Users = () => {
                             ))}
                         </div>
                     </div>
-                    <div className={Style.grade_1_text}>
+                    <div className={Style.grade_text} id="grade_2">
                         <h2>2학년</h2>
                         <hr className={Style.hr} />
-                        <div className={Style.users}>
+                        <div className={Style.users} >
                             {data_grade2.map((user, index) => (
                                 <div
                                     className={Style.user}
@@ -137,7 +138,7 @@ const Users = () => {
                             ))}
                         </div>
                     </div>
-                    <div className={Style.grade_1_text}>
+                    <div className={Style.grade_text} id="grade_3">
                         <h2>3학년</h2>
                         <hr className={Style.hr} />
                         <div className={Style.users}>

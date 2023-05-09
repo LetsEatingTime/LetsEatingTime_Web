@@ -62,6 +62,10 @@ div {
     float: left;
 }
 
+.grade_text {
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 750px) {
     /* Mobile - Layout */
     .users {
