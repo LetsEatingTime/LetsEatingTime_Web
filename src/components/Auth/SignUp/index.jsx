@@ -70,7 +70,6 @@ const SignUp = () => {
                 });
                 navigate("/login");
             }
-            // else if (response.) {
             else {
                 Toast.fire({
                     icon: "error",

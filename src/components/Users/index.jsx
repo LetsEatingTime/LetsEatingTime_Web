@@ -122,7 +122,7 @@ const Users = () => {
                     <div className={Style.grade_text} id="grade_2">
                         <h2>2학년</h2>
                         <hr className={Style.hr} />
-                        <div className={Style.users} >
+                        <div className={Style.users}>
                             {data_grade2.map((user, index) => (
                                 <div
                                     className={Style.user}

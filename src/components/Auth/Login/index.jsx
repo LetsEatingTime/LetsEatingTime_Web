@@ -61,11 +61,24 @@ const Login = () => {
             navigate("/");
         } catch (error) {
             // 로그인 실패
-            Toast.fire({
-                icon: "error",
-                title: "로그인 실패 !",
-            });
-            // console.log(error);
+            const data = error.response.data;
+            if (data.message === "Account without") {
+                Toast.fire({
+                    icon: "error",
+                    title: "존재하지않는 아이디입니다.",
+                });
+            } else if (data.message === "Credentials failed.") {
+                Toast.fire({
+                    icon: "error",
+                    title: "비밀번호가 일치하지 않습니다.",
+                });
+            } else {
+                console.log(error);
+                Toast.fire({
+                    icon: "error",
+                    title: "로그인 실패",
+                });
+            }
         }
     };
 
