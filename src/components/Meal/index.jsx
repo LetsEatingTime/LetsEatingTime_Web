@@ -66,12 +66,15 @@ const Meal = () => {
         <div>
             <Flex>
                 <div className={Style.box}>
+                    <h3>조식</h3>
                     <pre>{breakfast}</pre>
                 </div>
                 <div className={Style.box}>
+                    <h3>중식</h3>
                     <pre>{lunch}</pre>
                 </div>
                 <div className={Style.box}>
+                    <h3>석식</h3>
                     <pre>{dinner}</pre>
                 </div>
             </Flex>
