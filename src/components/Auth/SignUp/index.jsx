@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import Style from "../../../style/Signup_style.module.css";
 import Toast from "../../../lib/Alert/Toast";
@@ -69,8 +69,7 @@ const SignUp = () => {
                     title: name + "님 회원가입 요청이 완료되었습니다 !",
                 });
                 navigate("/login");
-            }
-            else {
+            } else {
                 Toast.fire({
                     icon: "error",
                     title: "회원가입 실패 :: 관리자에게 문의하세요",

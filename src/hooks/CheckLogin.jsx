@@ -1,11 +1,8 @@
-import axios from "axios";
-
-export const API_URL = process.env.REACT_APP_API;
+import api from "./Api";
 
 export const CheckLogin = async (accessToken) => {
-    const URL = `${API_URL}/api/user/profile`;
     try {
-        const response = await axios.get(URL, {
+        const response = await api.get("/api/user/profile", {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },

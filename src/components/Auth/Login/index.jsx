@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import Style from "../../../style/Login_style.module.css";
 import Toast from "../../../lib/Alert/Toast";
@@ -38,8 +38,6 @@ const Login = () => {
     };
 
     const handleLogin = async () => {
-        const URL = `${API_URL}/api/account/login.do`;
-
         if (id === "" || password === "") {
             Toast.fire({
                 icon: "error",
@@ -49,6 +47,7 @@ const Login = () => {
         }
         const data = { id, password };
         try {
+            const URL = `${API_URL}/api/account/login.do`;
             // 로그인 성공
             const response = await axios.post(URL, data);
             const { accessToken, refreshToken } = response.data.data;

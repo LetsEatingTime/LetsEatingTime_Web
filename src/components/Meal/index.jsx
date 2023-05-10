@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 
 import Style from "../../style/Meal_style.module.css";
+import api from "../../hooks/Api";
 
-export const API_URL = process.env.REACT_APP_API;
 const Flex = styled.div`
     display: flex;
     flex-direction: row;
@@ -24,9 +23,7 @@ const Meal = () => {
         const day = String(currentDate.getDate()).padStart(2, "0");
         const today = year + month + day;
 
-        const URL = `${API_URL}/openapi/meal?date=${today}`;
-        axios
-            .get(URL)
+        api.get(`/openapi/meal?date=${today}`)
             .then((response) => {
                 // console.log(response.data);
                 const mealRequest = response.data;
