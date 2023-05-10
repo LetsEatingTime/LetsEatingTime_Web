@@ -24,28 +24,28 @@ const Users = () => {
 
     useEffect(() => {
         const accessToken = localStorage.getItem("accessToken");
-        // CheckLogin(accessToken).then((isTeacher) => {
-        //     if (isTeacher) {
-        //         console.log("로그인 성공");
-        //     } else {
-        //         console.log("유효하지 않은 계정");
-        //         Toast.fire({
-        //             icon: "warning",
-        //             title: "유효하지 않은 게정입니다 !",
-        //         });
-        //         localStorage.removeItem("accessToken");
+        CheckLogin(accessToken).then((isTeacher) => {
+            if (isTeacher) {
+                console.log("로그인 성공");
+            } else {
+                console.log("유효하지 않은 계정");
+                Toast.fire({
+                    icon: "warning",
+                    title: "유효하지 않은 게정입니다 !",
+                });
+                localStorage.removeItem("accessToken");
 
-        //         let date = new Date();
-        //         date.setDate(date.getDate() - 1);
+                let date = new Date();
+                date.setDate(date.getDate() - 1);
 
-        //         let willCookie = "";
-        //         willCookie += "refreshToken=Value;";
-        //         willCookie += "Expires=" + date.toUTCString();
-        //         document.cookie = willCookie;
+                let willCookie = "";
+                willCookie += "refreshToken=Value;";
+                willCookie += "Expires=" + date.toUTCString();
+                document.cookie = willCookie;
 
-        //         navigate("/login");
-        //     }
-        // });
+                navigate("/login");
+            }
+        });
         const grade1 = [];
         const grade2 = [];
         const grade3 = [];

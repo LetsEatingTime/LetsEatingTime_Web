@@ -11,7 +11,10 @@ export const CheckLogin = async (accessToken) => {
         if (userData.status === 200) {
             const userType = response.data.data.user.userType;
             return userType === "T";
-        } else {
+        } else if (userData.status === 401) {
+            //작업수행
+        }
+        else {
             console.log("서버 에러");
         }
     } catch (error) {

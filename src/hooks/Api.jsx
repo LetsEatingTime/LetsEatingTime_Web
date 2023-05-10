@@ -2,17 +2,6 @@ import axios from "axios";
 
 export const URL = process.env.REACT_APP_API;
 
-// 쿠키를 설정하는 함수
-function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-        expires = `; expires=${date.toUTCString()}`;
-    }
-    document.cookie = `${name}=${value}${expires}; path=/`;
-}
-
 // 쿠키를 가져오는 함수
 function getCookie(name) {
     const nameEQ = `${name}=`;
