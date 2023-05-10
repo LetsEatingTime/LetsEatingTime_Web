@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 import Style from "../../style/UserDetail_style.module.css";
-import api from "../../hooks/Api";
+
+export const URL = process.env.REACT_APP_API;
 
 const UserDetail = (props) => {
     const location = useLocation();
@@ -15,10 +17,11 @@ const UserDetail = (props) => {
     useEffect(() => {
         const user = async () => {
             const userId = location.state.UserId;
+            const URL_UserDetail = `${URL}/api/teacher/get/user?id=${userId}`
 
             const accessToken = localStorage.getItem("accessToken");
             try {
-                const response = await api.get(`/api/teacher/get/user?id=${userId}`, {
+                const response = await axios.get(URL_UserDetail, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
