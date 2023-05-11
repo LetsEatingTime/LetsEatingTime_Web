@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Style from "../../style/UserDetail_style.module.css";
@@ -7,6 +7,7 @@ import Style from "../../style/UserDetail_style.module.css";
 export const URL = process.env.REACT_APP_API;
 
 const UserDetail = (props) => {
+    const navigate = useNavigate();
     const location = useLocation();
     const [userData, setUserData] = useState(false);
 
@@ -17,7 +18,7 @@ const UserDetail = (props) => {
     useEffect(() => {
         const user = async () => {
             const userId = location.state.UserId;
-            const URL_UserDetail = `${URL}/api/teacher/get/user?id=${userId}`
+            const URL_UserDetail = `${URL}/api/teacher/get/user?id=${userId}`;
 
             const accessToken = localStorage.getItem("accessToken");
             try {
@@ -28,25 +29,25 @@ const UserDetail = (props) => {
                 });
                 const data = response.data;
                 if (data.status === 200) {
-                    const users = data.data;
-                    // console.log(users);
-                    return users;
+                    // const user = data.data;
+                    setUserData(data.data);
+                    const mealTime = data.data.mealTime;
+                    mealTime.includes("breakfast") ? setBreakfast(true) : setBreakfast(false);
+                    mealTime.includes("lunch") ? setLunch(true) : setLunch(false);
+                    mealTime.includes("dinner") ? setDinner(true) : setDinner(false);
                 } else {
                     console.log("서버 에러");
                 }
             } catch (error) {
                 console.error(error);
+                navigate("/");
+                
             }
         };
-        user().then((data) => {
-            setUserData(data);
-            const mealTime = data.mealTime;
-            mealTime.includes("breakfast") ? setBreakfast(true) : setBreakfast(false);
-            mealTime.includes("lunch") ? setLunch(true) : setLunch(false);
-            mealTime.includes("dinner") ? setDinner(true) : setDinner(false);
-        });
+
         // console.log(mealTime);
-    }, [location]);
+        user();
+    }, [location, navigate]);
 
     return (
         <div>
