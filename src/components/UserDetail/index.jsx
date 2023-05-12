@@ -7,6 +7,7 @@ import api from "../../hooks/Api";
 const UserDetail = (props) => {
     const location = useLocation();
     const [userData, setUserData] = useState(false);
+    const [userProfile, setUserProfile] = useState('');
 
     const [breakfast, setBreakfast] = useState(false);
     const [lunch, setLunch] = useState(false);
@@ -26,6 +27,7 @@ const UserDetail = (props) => {
                 const data = response.data;
                 if (data.status === 200) {
                     const users = data.data;
+                    //TODO 
                     // console.log(users);
                     return users;
                 } else {
@@ -50,15 +52,24 @@ const UserDetail = (props) => {
             {userData ? (
                 <div>
                     <div className={Style.card}>
-                        <h1>{userData.user.name}</h1>
-                        <p>학년: {userData.user.grade}</p>
-                        <p>반: {userData.user.className}</p>
-                        <p>번호: {userData.user.classNo}</p>
-                        <span>아침: {breakfast ? <>✅</> : <>❌</>}</span>
-                        <br />
-                        <span>점심: {lunch ? <>✅</> : <>❌</>}</span>
-                        <br />
-                        <span>저녁: {dinner ? <>✅</> : <>❌</>}</span>
+                        <div className={Style.leftbox}>
+                            <img src={userData.user.idx}></img>
+                            <h1>{userData.user.name} </h1>
+                            <p>학년: {userData.user.grade} </p>
+                            <p>반: {userData.user.className} </p>
+                            <p>번호: {userData.user.classNo} </p>
+                        </div>
+                        <div className={Style.rightbox}>
+                            <h1>{userData.user.name} </h1>
+                            <p>학년: {userData.user.grade} </p>
+                            <p>반: {userData.user.className} </p>
+                            <p>번호: {userData.user.classNo} </p>
+                            <span>아침: {breakfast ? <>✅</> : <>❌</>}</span>
+                            <br />
+                            <span>점심: {lunch ? <>✅</> : <>❌</>}</span>
+                            <br />
+                            <span>저녁: {dinner ? <>✅</> : <>❌</>}</span>
+                        </div>
                     </div>
                 </div>
             ) : (

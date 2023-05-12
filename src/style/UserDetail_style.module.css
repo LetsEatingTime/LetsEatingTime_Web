@@ -1,8 +1,37 @@
-.card {
-    width: 329px;
-    height: 488px;
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
-    background: #717171;
-    border-radius: 20px;
-    margin: auto;
+@media screen and (min-width: 600px) {
+    /* Desctop - Layout */
+
+    .card {
+        width: 70%;
+        height: 500px;
+    
+        background: #717171;
+        border-radius: 20px;
+
+        display: flex;
+
+        margin: 0 auto;
+        /* margin-left: 15%; */
+        margin-top: 12%;
+        user-select: none;
+    }
+
+
+    .leftbox {
+        margin-left: 300px;
+    }
+
+
+    .rightbox {
+        margin-left: 100px;
+    }
+
 }
+
+@media screen and (max-width: 750px) {
+    /* Mobile - Layout */
+
+}
+
