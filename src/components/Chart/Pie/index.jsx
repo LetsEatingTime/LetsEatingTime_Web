@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import { ResponsivePie } from "@nivo/pie";
-import api from "../../../hooks/Api";
+
+export const URL = process.env.REACT_APP_API;
 
 const Piechart = () => {
     const [data, setData] = useState([]);
@@ -15,7 +17,8 @@ const Piechart = () => {
         },
     };
     useEffect(() => {
-        api.get("/api/statistic/meal-application")
+        const URL_Pie = `${URL}/api/statistic/meal-application`;
+        axios.get(URL_Pie)
             .then((response) => {
                 const data = response.data.data;
                 // console.log(data);

@@ -7,6 +7,7 @@ import NavBar from "../NavBar";
 import { CheckLogin } from "../../hooks/CheckLogin";
 import Piechart from "../Chart/Pie";
 import Meal from "../Meal";
+import BarChart from "../Chart/Bar";
 
 const Flex = styled.div`
     /* display: flex; */
@@ -51,6 +52,7 @@ const Home = () => {
                 <Flex>
                     <Meal />
                     <Piechart />
+                    <BarChart />
                 </Flex>
             </div>
         </div>
