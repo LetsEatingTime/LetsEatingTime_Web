@@ -27,6 +27,35 @@ const Users = () => {
         CheckLogin(accessToken).then((isTeacher) => {
             if (isTeacher) {
                 console.log("로그인 성공");
+
+                const accessToken = localStorage.getItem("accessToken");
+                
+                const grade1 = [];
+                const grade2 = [];
+                const grade3 = [];
+
+                UserList(accessToken)
+                    .then((users) => {
+                        // console.log(users)
+                        users.forEach((item) => {
+                            if (item.user.approvedYn === "Y") {
+                                if (item.user.grade === 1) {
+                                    grade1.push(item);
+                                } else if (item.user.grade === 2) {
+                                    grade2.push(item);
+                                } else if (item.user.grade === 3) {
+                                    grade3.push(item);
+                                }
+                            }
+                        });
+
+                        setData_grade1(grade1);
+                        setData_grade2(grade2);
+                        setData_grade3(grade3);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             } else {
                 console.log("유효하지 않은 계정");
                 Toast.fire({
@@ -46,31 +75,6 @@ const Users = () => {
                 navigate("/login");
             }
         });
-        const grade1 = [];
-        const grade2 = [];
-        const grade3 = [];
-        UserList(accessToken)
-            .then((users) => {
-                // console.log(users)
-                users.forEach((item) => {
-                    if (item.user.approvedYn === "Y") {
-                        if (item.user.grade === 1) {
-                            grade1.push(item);
-                        } else if (item.user.grade === 2) {
-                            grade2.push(item);
-                        } else if (item.user.grade === 3) {
-                            grade3.push(item);
-                        }
-                    }
-                });
-
-                setData_grade1(grade1);
-                setData_grade2(grade2);
-                setData_grade3(grade3);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
 
         // console.log(Userlist.name)
     }, [navigate]); // 빈 배열을 전달하여 컴포넌트가 처음 렌더링될 때만 실행
