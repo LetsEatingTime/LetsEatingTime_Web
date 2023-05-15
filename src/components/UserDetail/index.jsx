@@ -4,13 +4,15 @@ import axios from "axios";
 
 import Style from "../../style/UserDetail_style.module.css";
 
+import StudentCard from "../../image/StudentCard.svg";
+
 export const URL = process.env.REACT_APP_API;
 
 const UserDetail = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [userData, setUserData] = useState(false);
-    const [userProfile, setUserProfile] = useState('');
+    const [userProfile, setUserProfile] = useState("");
 
     const [breakfast, setBreakfast] = useState(false);
     const [lunch, setLunch] = useState(false);
@@ -42,7 +44,6 @@ const UserDetail = (props) => {
             } catch (error) {
                 console.error(error);
                 navigate("/");
-                
             }
         };
 
@@ -56,11 +57,22 @@ const UserDetail = (props) => {
                 <div>
                     <div className={Style.card}>
                         <div className={Style.leftbox}>
-                            <img src={userData.user.idx}></img>
-                            <h1>{userData.user.name} </h1>
-                            <p>학년: {userData.user.grade} </p>
-                            <p>반: {userData.user.className} </p>
-                            <p>번호: {userData.user.classNo} </p>
+                            <img className={Style.CardBox} src={StudentCard} />
+                            <img className={Style.CardStudentImage} src={userData.user.idx} />
+                            <div className={Style.CardBasicInformation}>
+                                <h1 className={Style.UserCardName}>{userData.user.name} </h1>
+                                <div className={Style.BaseOfStudent}>
+                                    <p className={Style.UserCardBasicInformation}>
+                                        학년: {userData.user.grade}{" "}
+                                    </p>
+                                    <p className={Style.UserCardBasicInformation}>
+                                        반: {userData.user.className}{" "}
+                                    </p>
+                                    <p className={Style.UserCardBasicInformation}>
+                                        번호: {userData.user.classNo}{" "}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                         <div className={Style.rightbox}>
                             <h1>{userData.user.name} </h1>

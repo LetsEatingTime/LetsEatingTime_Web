@@ -20,12 +20,32 @@
 
 
     .leftbox {
-        margin-left: 300px;
+        margin-left: 100px;
     }
 
 
     .rightbox {
         margin-left: 100px;
+    }
+
+    .CardBox {
+        width: 300px;
+        height: fit-content;
+    }
+
+    .CardBasicInformation {
+        display: flex;
+    }
+
+    .UserCardName {
+        font-size: 28px;
+        margin-left: 120px;
+        margin-top: -185px;
+    }
+
+    .UserCardBasicInformation {
+        margin-top: -150px;
+        margin-left: 5px;
     }
 
 }
