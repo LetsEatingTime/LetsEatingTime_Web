@@ -57,9 +57,9 @@ const UserDetail = (props) => {
                 <div>
                     <div className={Style.card}>
                         <div className={Style.leftbox}>
-                            <img className={Style.CardBox} src={StudentCard} />
-                            <img className={Style.CardStudentImage} src={userData.user.idx} />
                             <div className={Style.CardBasicInformation}>
+                                <img className={Style.CardBox} src={StudentCard} />
+                                {/* <img className={Style.CardStudentImage} src={userData.user.idx} /> */}
                                 <h1 className={Style.UserCardName}>{userData.user.name} </h1>
                                 <div className={Style.BaseOfStudent}>
                                     <p className={Style.UserCardBasicInformation}>
@@ -75,15 +75,19 @@ const UserDetail = (props) => {
                             </div>
                         </div>
                         <div className={Style.rightbox}>
-                            <h1>{userData.user.name} </h1>
-                            <p>학년: {userData.user.grade} </p>
-                            <p>반: {userData.user.className} </p>
-                            <p>번호: {userData.user.classNo} </p>
-                            <span>아침: {breakfast ? <>✅</> : <>❌</>}</span>
-                            <br />
-                            <span>점심: {lunch ? <>✅</> : <>❌</>}</span>
-                            <br />
-                            <span>저녁: {dinner ? <>✅</> : <>❌</>}</span>
+                            <div className={Style.User}>
+                                <p className={Style.UserGrade}>학년: {userData.user.grade} </p>
+                                <p className={Style.UserClass}>반: {userData.user.className} </p>
+                                <p className={Style.UserNum}>번호: {userData.user.classNo} </p>
+                            </div>
+                            <h1 className={Style.UserName}>{userData.user.name} </h1>
+                            <div className={Style.Didyoueat}>
+                                <span>{breakfast ? <>🟦</> : <>⬜️</>}</span>
+                                <br />
+                                <span>{lunch ? <>🟦</> : <>⬜️</>}</span>
+                                <br />
+                                <span>{dinner ? <>🟦</> : <>⬜️</>}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
