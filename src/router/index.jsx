@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react";
 import Loading from "../components/Loading";
 import UserDetail from "../components/UserDetail";
 import UserApply from "../components/Auth/UserApply";
+import NavBar from "../components/NavBar";
 
 const Login = lazy(() => import("../components/Auth/Login"));
 const SignUp = lazy(() => import("../components/Auth/SignUp"));
@@ -21,6 +22,7 @@ const Router = () => {
                 <Route path="/users" element={<Users />} />
                 <Route path="/user" element={<UserDetail />} />
                 <Route path="/admin" element={<UserApply />} />
+                <Route path="/test" element={<NavBar />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Suspense>
