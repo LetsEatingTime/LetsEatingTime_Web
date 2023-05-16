@@ -26,7 +26,8 @@ const Meal = () => {
         const today = year + month + day;
 
         const URL_Meal = `${URL}/openapi/meal?date=${today}`;
-        axios.get(URL_Meal)
+        axios
+            .get(URL_Meal)
             .then((response) => {
                 // console.log(response.data);
                 const mealRequest = response.data;
@@ -63,7 +64,7 @@ const Meal = () => {
             });
     }, []);
     return (
-        <div>
+        <div className={Style.MainContainer}>
             <Flex>
                 <div className={Style.box}>
                     <h3>조식</h3>

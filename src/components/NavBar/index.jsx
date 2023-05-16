@@ -30,7 +30,7 @@ function NavBar() {
                 <nav className={Style.header}>
                     <div className={Style.logoContainer}>
                         <Link to="/" className={Style.logo}>
-                            Eating
+                            Rice Bowl
                         </Link>
                     </div>
                     <div className={Style.navContainer}>

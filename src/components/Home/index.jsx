@@ -10,11 +10,12 @@ import Meal from "../Meal";
 import BarChart from "../Chart/Bar";
 
 const Flex = styled.div`
-    /* display: flex; */
+    display: flex;
     /* flex-direction: row; */
     /* flex-wrap: wrap; */
     /* justify-content: center; */
     /* align-items: center; */
+    margin-left: 30%;
 `;
 
 const Home = () => {
@@ -47,13 +48,13 @@ const Home = () => {
     return (
         <div>
             <NavBar />
-            <h1>Home Page</h1>
+            <h1>현재 급식은..</h1>
             <div>
                 <Flex>
-                    <Meal />
                     <Piechart />
                     <BarChart />
                 </Flex>
+                <Meal />
             </div>
         </div>
     );
