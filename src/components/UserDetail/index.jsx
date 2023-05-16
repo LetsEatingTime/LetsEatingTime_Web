@@ -6,6 +6,7 @@ import Style from "../../style/UserDetail_style.module.css";
 
 import StudentCard from "../../image/StudentCard.svg";
 import NavBar from "../NavBar";
+import defaultImage from "../../image/defaultImage.png";
 
 export const URL = process.env.REACT_APP_API;
 
@@ -13,7 +14,7 @@ const UserDetail = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [userData, setUserData] = useState(false);
-    const [userProfile, setUserProfile] = useState("");
+    const [userProfile, setUserProfile] = useState(null);
 
     const [breakfast, setBreakfast] = useState(false);
     const [lunch, setLunch] = useState(false);
@@ -39,6 +40,25 @@ const UserDetail = (props) => {
                     mealTime.includes("breakfast") ? setBreakfast(true) : setBreakfast(false);
                     mealTime.includes("lunch") ? setLunch(true) : setLunch(false);
                     mealTime.includes("dinner") ? setDinner(true) : setDinner(false);
+
+                    const profile = data.data.user.image;
+                    const profileURL = `${URL}/api/user/image/${profile}`;
+                    const axiosConfig = {
+                        responseType: 'blob',
+                        headers: {
+                          Authorization: `Bearer ${accessToken}`,
+                        },
+                      };
+                      axios.get(profileURL, axiosConfig)
+                      .then((res) => {
+                        const blobUrl = window.URL.createObjectURL(new Blob([res.data], { type: res.headers['content-type'] }));
+                        setUserProfile(blobUrl);
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                        setUserProfile(defaultImage);
+                        console.log("이미지 없음");
+                      });
                 } else {
                     console.log("서버 에러");
                 }
@@ -60,8 +80,12 @@ const UserDetail = (props) => {
                     <div className={Style.card}>
                         <div className={Style.leftbox}>
                             <div className={Style.CardBasicInformation}>
-                                <img className={Style.CardBox} src={StudentCard} />
-                                {/* <img className={Style.CardStudentImage} src={userData.user.idx} /> */}
+                                <img
+                                    className={Style.CardBox}
+                                    src={StudentCard}
+                                    alt="ProfileCard"
+                                />
+                                {/* img */}
                                 <h1 className={Style.UserCardName}>{userData.user.name} </h1>
                                 <div className={Style.BaseOfStudent}>
                                     <p className={Style.UserCardBasicInformation}>
