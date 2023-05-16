@@ -6,7 +6,6 @@ import Style from "../../style/UserDetail_style.module.css";
 
 import StudentCard from "../../image/StudentCard.svg";
 import NavBar from "../NavBar";
-import defaultImage from "../../image/defaultImage.png";
 
 export const URL = process.env.REACT_APP_API;
 
@@ -14,7 +13,7 @@ const UserDetail = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [userData, setUserData] = useState(false);
-    const [userProfile, setUserProfile] = useState(null);
+    const [userProfile, setUserProfile] = useState("");
 
     const [breakfast, setBreakfast] = useState(false);
     const [lunch, setLunch] = useState(false);
