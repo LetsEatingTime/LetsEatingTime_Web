@@ -27,13 +27,13 @@ function NavBar() {
     return (
         <div>
             <header>
-                <nav class={Style.header}>
-                    <div class={Style.logoContainer}>
+                <nav className={Style.header}>
+                    <div className={Style.logoContainer}>
                         <Link to="/" className={Style.logo}>
                             Eating
                         </Link>
                     </div>
-                    <div class={Style.navContainer}>
+                    <div className={Style.navContainer}>
                         <Link to="/users" className={Style.navLink}>
                             학생목록
                         </Link>
