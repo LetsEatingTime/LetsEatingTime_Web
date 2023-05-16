@@ -5,6 +5,7 @@ import axios from "axios";
 import Style from "../../style/UserDetail_style.module.css";
 
 import StudentCard from "../../image/StudentCard.svg";
+import NavBar from "../NavBar";
 
 export const URL = process.env.REACT_APP_API;
 
@@ -53,6 +54,7 @@ const UserDetail = (props) => {
 
     return (
         <div>
+            <NavBar />
             {userData ? (
                 <div>
                     <div className={Style.card}>
@@ -63,13 +65,17 @@ const UserDetail = (props) => {
                                 <h1 className={Style.UserCardName}>{userData.user.name} </h1>
                                 <div className={Style.BaseOfStudent}>
                                     <p className={Style.UserCardBasicInformation}>
-                                        학년: {userData.user.grade}{" "}
+                                        {userData.user.grade} 학년
                                     </p>
                                     <p className={Style.UserCardBasicInformation}>
-                                        반: {userData.user.className}{" "}
+                                        {userData.user.className} 반
                                     </p>
                                     <p className={Style.UserCardBasicInformation}>
-                                        번호: {userData.user.classNo}{" "}
+                                        {userData.user.classNo} 번
+                                    </p>
+                                    <p className={Style.UserCardBasicInformation}>
+                                        {" "}
+                                        {userData.user.name}
                                     </p>
                                 </div>
                             </div>
