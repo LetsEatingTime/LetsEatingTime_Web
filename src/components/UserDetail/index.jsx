@@ -6,6 +6,7 @@ import Style from "../../style/UserDetail_style.module.css";
 
 import StudentCard from "../../image/StudentCard.svg";
 import NavBar from "../NavBar";
+import defaultImage from "../../image/defalultImage.png";
 
 export const URL = process.env.REACT_APP_API;
 
@@ -40,27 +41,31 @@ const UserDetail = (props) => {
                     mealTime.includes("lunch") ? setLunch(true) : setLunch(false);
                     mealTime.includes("dinner") ? setDinner(true) : setDinner(false);
 
-                    //     const profile = data.data.user.image;
-                    //     const profileURL = `${URL}/api/user/image/${profile}`;
-                    //     const axiosConfig = {
-                    //         responseType: 'blob',
-                    //         headers: {
-                    //           Authorization: `Bearer ${accessToken}`,
-                    //         },
-                    //       };
-                    //       await axios.get(profileURL, axiosConfig)
-                    //       .then((res) => {
-                    //         const blobUrl = window.URL.createObjectURL(new Blob([res.data], { type: res.headers['content-type'] }));
+                    const profile = data.data.user.image;
+                    
+                    const profileURL = `${URL}/api/user/image/${profile}`;
+                    setUserProfile(profileURL);
+                    // const axiosConfig = {
+                    //     responseType: "blob",
+                    //     headers: {
+                    //         Authorization: `Bearer ${accessToken}`,
+                    //     },
+                    // };
+                    // await axios
+                    //     .get(profileURL, axiosConfig)
+                    //     .then((res) => {
+                    //         const blobUrl = window.URL.createObjectURL(
+                    //             new Blob([res.data], { type: res.headers["content-type"] })
+                    //         );
                     //         setUserProfile(blobUrl);
-                    //       })
-                    //       .catch((err) => {
+                    //     })
+                    //     .catch((err) => {
                     //         console.log(err);
                     //         setUserProfile(defaultImage);
                     //         console.log("이미지 없음");
-                    //       });
-                    // } else {
-                    //     console.log("서버 에러");
-                    // }
+                    //     });
+                } else {
+                    console.log("서버 에러");
                 }
             } catch (error) {
                 console.error(error);
@@ -85,7 +90,7 @@ const UserDetail = (props) => {
                                     src={StudentCard}
                                     alt="ProfileCard"
                                 />
-                                <img className={Style.CardImage} src={defaultImage} alt="Profile" />
+                                <img className={Style.CardImage} src={userProfile} alt="Profile" />
                                 <h1 className={Style.UserCardName}>{userData.user.name} </h1>
                                 <div className={Style.BaseOfStudent}>
                                     <p className={Style.UserCardBasicInformation}>
