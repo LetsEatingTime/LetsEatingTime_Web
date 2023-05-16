@@ -11,6 +11,7 @@ import UserList from "../../hooks/UserList";
 
 const Flex = styled.div`
     height: 100vh;
+    margin-left: 10%;
     /* justify-content: center;
     align-items: center;
     flex-direction: column; */
