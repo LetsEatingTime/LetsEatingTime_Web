@@ -106,6 +106,40 @@ const UserApply = () => {
         const UserId = await e.target.id;
         // console.log(UserId);
         console.log(UserId + "Nclick!");
+        const accessToken = localStorage.getItem("accessToken");
+        const DeleteURL = `${URL}/api/teacher/delete-user?id=${UserId}`;
+        try {
+            await axios.delete(
+                DeleteURL,
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                }
+            );
+            await UserList(accessToken).then((users) => {
+                // console.log(users)
+                const data = [];
+                users.forEach((item) => {
+                    if (item.user.approvedYn === "N") {
+                        data.push(item);
+                    }
+                });
+                setUsers(data);
+            });
+            Toast.fire({
+                icon: "success",
+                title: "유저승인 거절 성공",
+            }).catch((error) => {
+                Toast.fire({
+                    icon: "error",
+                    title: "유저승인 거절 실패",
+                });
+                console.error(error);
+            });
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
