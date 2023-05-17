@@ -1,0 +1,102 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+div {
+    font-family: "Pretendard";
+    font-style: normal;
+}
+
+.Nav_Legend {
+    margin-top: 100px;
+}
+
+.btn {
+    width: 230px;
+    height: 40px;
+
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 20px;
+    background: #545454;
+    border-radius: 10px;
+    border: none;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.users {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.user {
+    height: 75px;
+
+    margin-top: 30px;
+    background: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.hr {
+    width: 60%;
+    height: 2px;
+    border: none;
+    background-color: black;
+    border-radius: 3px;
+}
+
+.username {
+    margin-left: 30px;
+    margin-top: 28px;
+    font-weight: bold;
+    /* font-weight: 400; */
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+
+    float: left;
+}
+
+.grade_text {
+    margin-top: 20px;
+}
+ 
+.N_Btn {
+    float: right;
+    height: 37.5px;
+    margin-top: 20px;
+    margin-right: 20px;
+
+    background-color: #ffffff;
+
+    border: solid 2px #000000;
+    border-radius: 5px;
+}
+
+.N_Btn:hover {
+    background-color: #ff0000b3;
+    transition: linear 0.3s;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px) {
+    /* Mobile - Layout */
+    .users {
+        width: 80%;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+
+    .hr {
+        width: 80%;
+        height: 2px;
+        border: none;
+        background-color: black;
+        border-radius: 3px;
+    }
+}
