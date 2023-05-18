@@ -99,27 +99,31 @@ const UserDetail = (props) => {
                     <div className={Style.card}>
                         <div className={Style.leftbox}>
                             <div className={Style.CardBasicInformation}>
+                                {/* <div className={Style.StudentCard}> */}
                                 <img
                                     className={Style.CardBox}
                                     src={StudentCard}
                                     alt="ProfileCard"
                                 />
                                 <img className={Style.CardImage} src={userProfile} alt="Profile" />
-                                <h1 className={Style.UserCardName}>{userData.user.name} </h1>
+                                {/* </div> */}
                                 <div className={Style.BaseOfStudent}>
-                                    <p className={Style.UserCardBasicInformation}>
-                                        {userData.user.grade} 학년
-                                    </p>
-                                    <p className={Style.UserCardBasicInformation}>
-                                        {userData.user.className} 반
-                                    </p>
-                                    <p className={Style.UserCardBasicInformation}>
-                                        {userData.user.classNo} 번
-                                    </p>
-                                    <p className={Style.UserCardBasicInformation}>
-                                        {" "}
-                                        {userData.user.name}
-                                    </p>
+                                    <h1 className={Style.UserCardName}>{userData.user.name} </h1>
+                                    <div className={Style.baseForm}>
+                                        <p className={Style.UserCardBasicInformation}>
+                                            {userData.user.grade} 학년
+                                        </p>
+                                        <p className={Style.UserCardBasicInformation}>
+                                            {userData.user.className} 반
+                                        </p>
+                                        <p className={Style.UserCardBasicInformation}>
+                                            {userData.user.classNo} 번
+                                        </p>
+                                        <p className={Style.UserCardBasicInformation}>
+                                            {" "}
+                                            {userData.user.name}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
