@@ -8,109 +8,147 @@ import { ResponsiveBar } from "@nivo/bar";
 export const URL = process.env.REACT_APP_API;
 
 const Barchart = () => {
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
+    const [breakfast, setBreakfast] = useState();
+    const [lunch, setLunch] = useState([]);
+    const [dinner, setDinner] = useState([]);
 
-    const handle = {
-        padClick: (data) => {
-            console.log(data);
-        },
-        legendClick: (data) => {
-            console.log(data);
-        },
-    };
+    // const setDatabreakfast = async (responsedata) => {
+    //     setBreakfast(...responsedata);
+    //     console.log(breakfast);
+    // };
+
     useEffect(() => {
         const URL_PieBreakfast = `${URL}/api/statistic/meal-attend?type=breakfast`;
         axios
             .get(URL_PieBreakfast)
             .then((response) => {
-                const data = response.data.data;
-                // console.log(data);
-                setData(prevData => [...prevData, ...data.map(item => ({...item}))]);
+                const responsedata = response.data.data;
+                
+                setBreakfast(responsedata);
             })
             .catch((error) => {
-                console.log(error);
+                console.error(error);
             });
-        const URL_PieLunch = `${URL}/api/statistic/meal-attend?type=lunch`;
-        axios
-            .get(URL_PieLunch)
-            .then((response) => {
-                const data = response.data.data;
-                // console.log(data);
-                setData(prevData => [...prevData, ...data.map(item => ({...item}))]);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        const URL_PieDinner = `${URL}/api/statistic/meal-attend?type=dinner`;
-        axios
-            .get(URL_PieDinner)
-            .then((response) => {
-                const data = response.data.data;
-                // console.log(data);
-                setData(prevData => [...prevData, ...data.map(item => ({...item}))]);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        console.log(data);
     }, []);
     return (
         // chart height이 100%이기 때문이 chart를 덮는 마크업 요소에 height 설정
         <div style={{ width: "420px", height: "420px" }}>
             <ResponsiveBar
-                data={data}
-                margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-                innerRadius={0.5}
-                padAngle={1.8}
-                cornerRadius={8}
-                colors={["#FFAAAA", "#84FF79"]}
-                borderWidth={1}
-                activeOuterRadiusOffset={8}
-                arcLinkLabelsSkipAngle={0}
-                arcLinkLabelsTextColor="#000000"
-                arcLinkLabelsThickness={2}
-                arcLinkLabelsColor={{ from: "color" }}
-                arcLabelsSkipAngle={10}
-                theme={{
-                    labels: {
-                        text: {
-                            fontSize: 14,
-                            fill: "#000000",
-                        },
+                // data={[
+                //     {
+                //         result: "breakfast",
+                //         "급식 먹음": 82,
+                //         "급식 안먹음": 82,
+                //     },
+                // ]}
+                data={[
+                    {
+                        result: "breakfast",
+                        "급식 먹음": 82,
+                        "급식 안먹음": 82,
                     },
-                    legends: {
-                        text: {
-                            fontSize: 12,
-                            fill: "#000000",
-                        },
+                ]}
+                keys={["급식 먹음", "급식 안먹음"]}
+                indexBy="result"
+                // margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+                margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+                padding={0.3}
+                groupMode="grouped"
+                valueScale={{ type: "linear" }}
+                indexScale={{ type: "band", round: true }}
+                colors={{ scheme: "nivo" }}
+                defs={[
+                    {
+                        id: "dots",
+                        type: "patternDots",
+                        background: "inherit",
+                        color: "#38bcb2",
+                        size: 4,
+                        padding: 1,
+                        stagger: true,
                     },
+                    {
+                        id: "lines",
+                        type: "patternLines",
+                        background: "inherit",
+                        color: "#eed312",
+                        rotation: -45,
+                        lineWidth: 6,
+                        spacing: 10,
+                    },
+                ]}
+                // fill={[
+                //     {
+                //         match: {
+                //             id: "fries",
+                //         },
+                //         id: "dots",
+                //     },
+                //     {
+                //         match: {
+                //             id: "sandwich",
+                //         },
+                //         id: "lines",
+                //     },
+                // ]}
+                borderColor={{
+                    from: "color",
+                    modifiers: [["darker", 1.6]],
                 }}
-                onClick={handle.padClick}
+                axisTop={null}
+                axisRight={null}
+                axisBottom={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: "급식 통계",
+                    legendPosition: "middle",
+                    legendOffset: 32,
+                }}
+                axisLeft={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: "급식 통계",
+                    legendPosition: "middle",
+                    legendOffset: -40,
+                }}
+                labelSkipWidth={12}
+                labelSkipHeight={12}
+                labelTextColor={{
+                    from: "color",
+                    modifiers: [["darker", 1.6]],
+                }}
                 legends={[
                     {
-                        anchor: "bottom",
-                        direction: "row",
+                        dataFrom: "keys",
+                        anchor: "bottom-right",
+                        direction: "column",
                         justify: false,
-                        translateX: 0,
-                        translateY: 56,
-                        itemsSpacing: 0,
+                        translateX: 120,
+                        translateY: 0,
+                        itemsSpacing: 2,
                         itemWidth: 100,
-                        itemHeight: 18,
+                        itemHeight: 20,
                         itemDirection: "left-to-right",
-                        itemOpacity: 1,
-                        symbolSize: 18,
-                        symbolShape: "circle",
+                        itemOpacity: 0.85,
+                        symbolSize: 20,
                         effects: [
                             {
                                 on: "hover",
                                 style: {
-                                    itemTextColor: "olive",
+                                    itemOpacity: 1,
                                 },
                             },
                         ],
-                        onClick: handle.legendClick,
                     },
                 ]}
+                role="application"
+                ariaLabel="Nivo bar chart demo"
+                barAriaLabel={(e) =>
+                    e.id + ": " + e.formattedValue + " in 급식 통계: " + e.indexValue
+                }
             />
         </div>
     );

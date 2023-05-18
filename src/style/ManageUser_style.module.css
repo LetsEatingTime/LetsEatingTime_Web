@@ -82,6 +82,7 @@ div {
     background-color: #ff0000b3;
     transition: linear 0.3s;
     cursor: pointer;
+    color: #ffffff;
 }
 
 @media screen and (max-width: 750px) {
