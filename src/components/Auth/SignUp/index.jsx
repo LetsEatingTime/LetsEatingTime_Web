@@ -55,6 +55,7 @@ const SignUp = () => {
             id: id,
             password: password,
             name: name,
+            userType: "T",
             grade: 9,
             className: 0,
             classNo: 0,

@@ -84,8 +84,7 @@ const Users = () => {
         const UserId = await e.target.id;
         // console.log(UserId);
         navigate("/user", {
-            state: { UserId: UserId },
-            replace: true,
+            state: { UserId: UserId }
         });
     };
 

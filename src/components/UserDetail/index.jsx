@@ -37,33 +37,47 @@ const UserDetail = (props) => {
                     // const user = data.data;
                     setUserData(data.data);
                     const mealTime = data.data.mealTime;
-                    mealTime.includes("breakfast") ? setBreakfast(true) : setBreakfast(false);
-                    mealTime.includes("lunch") ? setLunch(true) : setLunch(false);
-                    mealTime.includes("dinner") ? setDinner(true) : setDinner(false);
-
+                    if (mealTime) {
+                        setBreakfast(mealTime.includes("breakfast"));
+                        setLunch(mealTime.includes("lunch"));
+                        setDinner(mealTime.includes("dinner"));
+                    } else {
+                        setBreakfast(false);
+                        setLunch(false);
+                        setDinner(false);
+                    }
+                    // (await mealTime.includes("breakfast"))
+                    //     ? setBreakfast(true)
+                    //     : setBreakfast(false);
+                    // (await mealTime.includes("lunch")) ? setLunch(true) : setLunch(false);
+                    // (await mealTime.includes("dinner")) ? setDinner(true) : setDinner(false);
+            
                     const profile = data.data.user.image;
-
-                    const profileURL = `${URL}/api/user/image/${profile}`;
-                    setUserProfile(profileURL);
-                    // const axiosConfig = {
-                    //     responseType: "blob",
-                    //     headers: {
-                    //         Authorization: `Bearer ${accessToken}`,
-                    //     },
-                    // };
-                    // await axios
-                    //     .get(profileURL, axiosConfig)
-                    //     .then((res) => {
-                    //         const blobUrl = window.URL.createObjectURL(
-                    //             new Blob([res.data], { type: res.headers["content-type"] })
-                    //         );
-                    //         setUserProfile(blobUrl);
-                    //     })
-                    //     .catch((err) => {
-                    //         console.log(err);
-                    //         setUserProfile(defaultImage);
-                    //         console.log("이미지 없음");
-                    //     });
+                    if (profile === null) {
+                        setUserProfile(defaultImage);
+                    } else {
+                        const profileURL = `${URL}/api/user/image/${profile}`;
+                        setUserProfile(profileURL);
+                        // const axiosConfig = {
+                        //     responseType: "blob",
+                        //     headers: {
+                        //         Authorization: `Bearer ${accessToken}`,
+                        //     },
+                        // };
+                        // await axios
+                        //     .get(profileURL, axiosConfig)
+                        //     .then((res) => {
+                        //         const blobUrl = window.URL.createObjectURL(
+                        //             new Blob([res.data], { type: res.headers["content-type"] })
+                        //         );
+                        //         setUserProfile(blobUrl);
+                        //     })
+                        //     .catch((err) => {
+                        //         console.log(err);
+                        //         setUserProfile(defaultImage);
+                        //         console.log("이미지 없음");
+                        //     });
+                    }
                 } else {
                     console.log("서버 에러");
                 }
