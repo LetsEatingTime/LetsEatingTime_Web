@@ -4,34 +4,33 @@ export const links = [
   {
     id: 1,
     url: '/',
-    text: 'random',
+    text: '홈',
   },
   {
     id: 2,
-    url: '/about',
-    text: 'about',
+    url: '/Users',
+    text: '학생목록',
   },
   {
     id: 3,
-    url: '/projects',
-    text: 'projects',
+    url: '/admin/users',
+    text: '학생관리',
   },
   {
     id: 4,
-    url: '/contact',
-    text: 'contact',
+    url: '/admin/apply',
+    text: '학생승인',
   },
-  {
-    id: 5,
-    url: '/profile',
-    text: 'profile',
-  },
+//   {
+//     id: 5,
+//     url: '/admin/apply',
+//     text: '학생승인',
+//   },
 ]
 
 export const social = [
   {
     id: 1,
-    url: 'https://www.twitter.com',
     icon: <FaSignOutAlt />,
   },
 ]

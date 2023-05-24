@@ -1,10 +1,21 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
+import { createGlobalStyle } from "styled-components";
 import { links, social } from "./Data";
 // import logo from "./logo.svg";
 
 import "../../style/NavBar.css";
 import { useNavigate } from "react-router-dom";
+
+const GlobalStyles = createGlobalStyle`
+  *,
+  ::after,
+  ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
 
 const Navbar = () => {
     // 메뉴버튼
@@ -18,7 +29,20 @@ const Navbar = () => {
     const handleClickUrl = (e) => {
         // console.log(e.target.id);
         navigate(e.target.id);
-    }
+    };
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken");
+
+        let date = new Date();
+        date.setDate(date.getDate() - 1);
+
+        let willCookie = "";
+        willCookie += "refreshToken=Value;";
+        willCookie += "Expires=" + date.toUTCString();
+        document.cookie = willCookie;
+
+        navigate("/login");
+    };
     useEffect(() => {
         const linksHeight = linksRef.current.getBoundingClientRect().height;
         if (showLinks) {
@@ -28,41 +52,44 @@ const Navbar = () => {
         }
     }, [showLinks]);
     return (
-        <nav>
-            <div className="nav-center">
-                <div className="nav-header">
-                    {/* <img src={logo} className="logo" alt="logo" /> */}
-                    <button className="nav-toggle" onClick={toggleLinks}>
-                        <FaBars />
-                    </button>
-                </div>
-                {/* 메뉴버튼 클릭시 목록 보이도록 */}
-                <div className="links-container" ref={linksContainerRef}>
-                    <ul className="links" ref={linksRef}>
-                        {/* data에서 Nav목록 가져오기 */}
-                        {links.map((link) => {
-                            const { id, url, text } = link;
+        <div>
+            <GlobalStyles />
+            <nav>
+                <div className="nav-center">
+                    <div className="nav-header">
+                        {/* <img src={logo} className="logo" alt="logo" /> */}
+                        <button className="nav-toggle" onClick={toggleLinks}>
+                            <FaBars />
+                        </button>
+                    </div>
+                    {/* 메뉴버튼 클릭시 목록 보이도록 */}
+                    <div className="links-container" ref={linksContainerRef}>
+                        <ul className="links" ref={linksRef}>
+                            {/* data에서 Nav목록 가져오기 */}
+                            {links.map((link) => {
+                                const { id, url, text } = link;
+                                return (
+                                    <li key={id} onClick={handleClickUrl}>
+                                        <div id={url}>{text}</div>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                    {/* 로그아웃 아이콘 가져오기 */}
+                    <ul className="social-icons">
+                        {social.map((socialIcon) => {
+                            const { id, icon } = socialIcon;
                             return (
-                                <li key={id} onClick={handleClickUrl}>
-                                    <div id={url}>{text}</div>
+                                <li key={id}>
+                                    <div onClick={handleLogout}>{icon}</div>
                                 </li>
                             );
                         })}
                     </ul>
                 </div>
-                {/* social 아이콘 가져오기 */}
-                <ul className="social-icons">
-                    {social.map((socialIcon) => {
-                        const { id, url, icon } = socialIcon;
-                        return (
-                            <li key={id}>
-                                <a href={url}>{icon}</a>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-        </nav>
+            </nav>
+        </div>
     );
 };
 
