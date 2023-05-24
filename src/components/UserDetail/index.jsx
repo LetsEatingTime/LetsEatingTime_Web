@@ -5,7 +5,6 @@ import axios from "axios";
 import Style from "../../style/UserDetail_style.module.css";
 
 import StudentCard from "../../image/StudentCard.svg";
-import NavBar from "../NavBar";
 import defaultImage from "../../image/defalultImage.png";
 
 export const URL = process.env.REACT_APP_API;
@@ -51,7 +50,7 @@ const UserDetail = (props) => {
                     //     : setBreakfast(false);
                     // (await mealTime.includes("lunch")) ? setLunch(true) : setLunch(false);
                     // (await mealTime.includes("dinner")) ? setDinner(true) : setDinner(false);
-            
+
                     const profile = data.data.user.image;
                     if (profile === null) {
                         setUserProfile(defaultImage);
@@ -93,7 +92,6 @@ const UserDetail = (props) => {
 
     return (
         <div>
-            <NavBar />
             {userData ? (
                 <div>
                     <div className={Style.card}>

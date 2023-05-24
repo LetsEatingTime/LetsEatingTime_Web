@@ -4,14 +4,13 @@ import styled from "styled-components";
 import { Link } from "react-scroll";
 
 import Style from "../../style/Users_style.module.css";
-import NavBar from "../NavBar";
 import Toast from "../../lib/Alert/Toast";
 import { CheckLogin } from "../../hooks/CheckLogin";
 import UserList from "../../hooks/UserList";
 
 const Flex = styled.div`
     height: 100vh;
-    margin-left: 10%;
+    /* margin-left: 10%; */
     /* justify-content: center;
     align-items: center;
     flex-direction: column; */
@@ -84,13 +83,12 @@ const Users = () => {
         const UserId = await e.target.id;
         // console.log(UserId);
         navigate("/user", {
-            state: { UserId: UserId }
+            state: { UserId: UserId },
         });
     };
 
     return (
         <div>
-            <NavBar />
             <div className={Style.Nav_Legend}>
                 <Flex>
                     <h1>학생목록</h1>

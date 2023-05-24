@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import Toast from "../../lib/Alert/Toast";
-import NavBar from "../NavBar";
+// import NavBar from "../NavBar";
 import { CheckLogin } from "../../hooks/CheckLogin";
 import Piechart from "../Chart/Pie";
 import Meal from "../Meal";
 import BarChart from "../Chart/Bar";
+import Navbar from "../NavBar/NavBar";
 
 const Flex = styled.div`
     display: flex;
@@ -47,15 +48,15 @@ const Home = () => {
     }, [navigate]); // 빈 배열을 전달하여 컴포넌트가 처음 렌더링될 때만 실행
     return (
         <div>
-            <NavBar />
-            <h1>현재 급식은..</h1>
-            <div>
-                <Flex>
-                    <Piechart />
-                    <BarChart />
-                </Flex>
-                <Meal />
-            </div>
+            <Navbar />
+                <h1>현재 급식은..</h1>
+                <div>
+                    <Flex>
+                        <Piechart />
+                        <BarChart />
+                    </Flex>
+                    <Meal />
+                </div>
         </div>
     );
 };
