@@ -29,7 +29,7 @@ const Piechart = () => {
             });
     }, []);
     return (
-        <div style={{ width: "420px", height: "420px" }}>
+        <div style={{ width: "100%", height: "420px" }}>
             <ResponsivePie
                 data={data}
                 margin={{ top: 40, right: 80, bottom: 80, left: 80 }}

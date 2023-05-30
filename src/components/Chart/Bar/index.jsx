@@ -33,7 +33,7 @@ const Barchart = () => {
     }, []);
     return (
         // chart height이 100%이기 때문이 chart를 덮는 마크업 요소에 height 설정
-        <div style={{ width: "420px", height: "420px" }}>
+        <div style={{ width: "100%", height: "420px" }}>
             <ResponsiveBar
                 // data={[
                 //     {

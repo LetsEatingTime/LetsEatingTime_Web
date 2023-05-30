@@ -32,6 +32,7 @@ const UserApply = () => {
                     })
                     .catch((error) => {
                         console.error(error);
+                        navigate("/");
                     });
             } else {
                 console.log("유효하지 않은 계정");
