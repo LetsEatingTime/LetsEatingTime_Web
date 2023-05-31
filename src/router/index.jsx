@@ -13,23 +13,21 @@ const NotFound = lazy(() => import("../components/NotFound"));
 const Users = lazy(() => import("../components/Users"));
 
 const Router = () => {
-    return (
-        <Suspense fallback={<Loading />}>
-            <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="*" element={<NotFound />} />
+  return (
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="*" element={<NotFound />} />
 
-
-                <Route path="/" element={<Home />} />
-                <Route path="/users" element={<Users />} />
-                <Route path="/user" element={<UserDetail />} />
-                <Route path="/admin/apply" element={<UserApply />} />
-                <Route path="/admin/users" element={<ManageUser />} />
-                
-            </Routes>
-        </Suspense>
-    );
+        <Route path="/" element={<Home />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/user" element={<UserDetail />} />
+        <Route path="/admin/apply" element={<UserApply />} />
+        <Route path="/admin/users" element={<ManageUser />} />
+      </Routes>
+    </Suspense>
+  );
 };
 
 export default Router;
