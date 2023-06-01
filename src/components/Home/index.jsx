@@ -10,13 +10,9 @@ import Meal from "../Meal";
 import BarChart from "../Chart/Bar";
 import Navbar from "../NavBar/NavBar";
 
-const Flex = styled.div`
-  display: flex;
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  margin-left: 30%;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
 
 const Home = () => {
@@ -49,13 +45,15 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <h1>현재 급식은..</h1>
-      <div>
-        <Flex>
-          <Piechart />
-          <BarChart />
-        </Flex>
-        <Meal />
+      <div style={{marginTop: "20px"}}>
+        <h1>현재 급식은..</h1>
+        <div>
+          <Grid>
+            <Piechart />
+            <BarChart />
+          </Grid>
+          <Meal />
+        </div>
       </div>
     </div>
   );

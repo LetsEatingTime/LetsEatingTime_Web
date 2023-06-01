@@ -146,24 +146,33 @@ const UserApply = () => {
         <h1>승인대기 목록</h1>
         <div className={Style.grade_text} id="grade_1">
           <hr className={Style.hr} />
-          <div className={Style.users}>
-            {Users.map((user, index) => (
-              <div className={Style.user} key={index} onClick={handleUserClick} id={user.user.id}>
-                <span className={Style.username}>
-                  {user.user.grade}학년 {user.user.className}반 {user.user.classNo}번{" "}
-                  {user.user.name}
-                </span>
-                <span className={Style.N_Btn} id={user.user.id} onClick={handleNClick}>
-                  ❌
-                </span>
-                <span className={Style.Y_Btn} id={user.user.id} onClick={handleYClick}>
-                  ✅
-                </span>
+          {Users.length === 0 ? (
+            <h2>승인 대기 중인 유저가 없습니다.</h2>
+          ) : (
+            <div className={Style.users}>
+              {Users.map((user, index) => (
+                <div
+                  className={Style.user}
+                  key={index}
+                  onClick={handleUserClick}
+                  id={user.user.id}
+                >
+                  <span className={Style.username}>
+                    {user.user.grade}학년 {user.user.className}반 {user.user.classNo}번{" "}
+                    {user.user.name}
+                  </span>
+                  <span className={Style.N_Btn} id={user.user.id} onClick={handleNClick}>
+                    ❌
+                  </span>
+                  <span className={Style.Y_Btn} id={user.user.id} onClick={handleYClick}>
+                    ✅
+                  </span>
 
-                {/* <div className={Style.meal_status}>{ user }</div> */}
-              </div>
-            ))}
-          </div>
+                  {/* <div className={Style.meal_status}>{ user }</div> */}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
