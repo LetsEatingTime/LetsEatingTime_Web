@@ -11,8 +11,10 @@ import BarChart from "../Chart/Bar";
 import Navbar from "../NavBar/NavBar";
 
 const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  width: 50%;
+  margin: 50px auto 0;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
 `;
 
 const Home = () => {
@@ -45,7 +47,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div style={{marginTop: "20px"}}>
+      <div style={{ marginTop: "20px" }}>
         <h1>현재 급식은..</h1>
         <div>
           <Grid>
