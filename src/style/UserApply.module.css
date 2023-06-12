@@ -69,11 +69,13 @@ div {
 .Y_Btn {
   float: right;
   padding: 30px;
+  cursor: pointer;
 }
 
 .N_Btn {
   float: right;
   padding: 30px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 750px) {
