@@ -87,7 +87,7 @@ const Barchart = () => {
   };
 
   return (
-    <div style={{ width: "60vw", height: "40vh" }}>
+    <div style={{ width: "60vw", height: "300px" }}>
       <Bar ref={chartRef} options={options} data={data} />
     </div>
   );
