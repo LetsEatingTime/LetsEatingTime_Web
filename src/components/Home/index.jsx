@@ -11,11 +11,21 @@ import BarChart from "../Chart/Bar";
 import Navbar from "../NavBar/NavBar";
 
 const Grid = styled.div`
-  width: 50%;
+  width: 80%;
   margin: 50px auto 0;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr; */
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
 `;
+
+// const Flex = styled.div`
+//   display: flex;
+
+//   width: 60%;
+
+//   margin: 50px auto 0;
+// `;
 
 const Home = () => {
   const navigate = useNavigate();
@@ -49,10 +59,10 @@ const Home = () => {
       <Navbar />
       <div style={{ marginTop: "20px" }}>
         <h1>현재 급식은..</h1>
-        <div>
+        <div style={{ margin: "0 auto" }}>
           <Grid>
-            <Piechart />
             <BarChart />
+            <Piechart />
           </Grid>
           <Meal />
         </div>

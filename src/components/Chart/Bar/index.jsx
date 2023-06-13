@@ -87,7 +87,17 @@ const Barchart = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "300px" }}>
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "350px",
+        backgroundColor: "white",
+        // border: "1px solid black",
+        borderRadius: "10px",
+        boxShadow: "1px 1px 6px 1px gray",
+      }}
+    >
       <Bar ref={chartRef} options={options} data={data} />
     </div>
   );

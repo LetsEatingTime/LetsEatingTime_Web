@@ -80,7 +80,16 @@ const Piechart = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "300px" }}>
+    <div
+      style={{
+        // position: "relative",
+        width: "100%",
+        height: "350px",
+        backgroundColor: "white",
+        borderRadius: "10px",
+        boxShadow: "1px 1px 6px 1px gray",
+      }}
+    >
       <Pie ref={chartRef} data={data} options={options} />
     </div>
   );
