@@ -32,22 +32,22 @@ const Barchart = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const resizeChart = () => {
-      if (chartRef.current) {
-        const chartInstance = chartRef.current.chartInstance;
-        if (chartInstance) {
-          chartInstance.resize();
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const resizeChart = () => {
+  //     if (chartRef.current) {
+  //       const chartInstance = chartRef.current.chartInstance;
+  //       if (chartInstance) {
+  //         chartInstance.resize();
+  //       }
+  //     }
+  //   };
 
-    window.addEventListener("resize", resizeChart);
+  //   window.addEventListener("resize", resizeChart);
 
-    return () => {
-      window.removeEventListener("resize", resizeChart);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", resizeChart);
+  //   };
+  // }, []);
 
   ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -87,7 +87,7 @@ const Barchart = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "300px" }}>
+    <div style={{ width: "60vw", height: "40vh" }}>
       <Bar ref={chartRef} options={options} data={data} />
     </div>
   );
