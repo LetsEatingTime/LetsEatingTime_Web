@@ -15,6 +15,10 @@ const Grid = styled.div`
   margin: 50px auto 0;
 
   display: grid;
+  /* display: f; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
   grid-template-columns: 1fr 1fr;
   gap: 80px;
 `;
@@ -61,8 +65,23 @@ const Home = () => {
         <h1>현재 급식은..</h1>
         <div style={{ margin: "0 auto" }}>
           <Grid>
-            <BarChart />
-            <Piechart />
+            <div>
+              <BarChart />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                // margin: "0 auto",
+                backgroundColor: "white",
+                borderRadius: "10px",
+                boxShadow: "1px 1px 6px 1px gray",
+              }}
+            >
+              <Piechart />
+            </div>
           </Grid>
           <Meal />
         </div>
