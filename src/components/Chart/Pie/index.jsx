@@ -80,8 +80,13 @@ const Piechart = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "300px" }}>
-      <Pie ref={chartRef} data={data} options={options} />
+    <div
+      style={{
+        width: "100%",
+        height: "350px",
+      }}
+    >
+      <Pie style={{ display: "inline-block" }} ref={chartRef} data={data} options={options} />
     </div>
   );
 };
