@@ -151,12 +151,7 @@ const UserApply = () => {
           ) : (
             <div className={Style.users}>
               {Users.map((user, index) => (
-                <div
-                  className={Style.user}
-                  key={index}
-                  onClick={handleUserClick}
-                  id={user.user.id}
-                >
+                <div className={Style.user} key={index} onClick={handleUserClick} id={user.user.id}>
                   <span className={Style.username}>
                     {user.user.grade}학년 {user.user.className}반 {user.user.classNo}번{" "}
                     {user.user.name}
