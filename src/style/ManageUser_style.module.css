@@ -5,6 +5,10 @@ div {
   font-style: normal;
 }
 
+.Nav_Legend {
+  margin-top: 100px;
+}
+
 .btn {
   width: 230px;
   height: 40px;
@@ -35,7 +39,7 @@ div {
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .hr {
@@ -60,6 +64,25 @@ div {
 
 .grade_text {
   margin-top: 20px;
+}
+
+.N_Btn {
+  float: right;
+  height: 37.5px;
+  margin-top: 20px;
+  margin-right: 20px;
+
+  background-color: #ffffff;
+
+  border: solid 2px #000000;
+  border-radius: 5px;
+}
+
+.N_Btn:hover {
+  background-color: #ff0000b3;
+  transition: linear 0.3s;
+  cursor: pointer;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 750px) {

@@ -1,119 +1,106 @@
-// TODO : 차트에 데이터 연결하기
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-
-import { ResponsiveBar } from "@nivo/bar";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
 export const URL = process.env.REACT_APP_API;
 
 const Barchart = () => {
-    const [data, setData] = useState([]);
+  const [mealData, setMealData] = useState([]);
+  const chartRef = useRef(null);
 
-    const handle = {
-        padClick: (data) => {
-            console.log(data);
-        },
-        legendClick: (data) => {
-            console.log(data);
-        },
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const URL_PieBreakfast = `${URL}/api/statistic/meal-attend?type=`;
+        const response = await axios.get(URL_PieBreakfast);
+        const responseData = response.data.data;
+        setMealData(responseData);
+      } catch (error) {
+        console.error(error);
+      }
     };
-    useEffect(() => {
-        const URL_PieBreakfast = `${URL}/api/statistic/meal-attend?type=breakfast`;
-        axios
-            .get(URL_PieBreakfast)
-            .then((response) => {
-                const data = response.data.data;
-                // console.log(data);
-                setData(prevData => [...prevData, ...data.map(item => ({...item}))]);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        const URL_PieLunch = `${URL}/api/statistic/meal-attend?type=lunch`;
-        axios
-            .get(URL_PieLunch)
-            .then((response) => {
-                const data = response.data.data;
-                // console.log(data);
-                setData(prevData => [...prevData, ...data.map(item => ({...item}))]);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        const URL_PieDinner = `${URL}/api/statistic/meal-attend?type=dinner`;
-        axios
-            .get(URL_PieDinner)
-            .then((response) => {
-                const data = response.data.data;
-                // console.log(data);
-                setData(prevData => [...prevData, ...data.map(item => ({...item}))]);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        console.log(data);
-    }, []);
-    return (
-        // chart height이 100%이기 때문이 chart를 덮는 마크업 요소에 height 설정
-        <div style={{ width: "420px", height: "420px" }}>
-            <ResponsiveBar
-                data={data}
-                margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-                innerRadius={0.5}
-                padAngle={1.8}
-                cornerRadius={8}
-                colors={["#FFAAAA", "#84FF79"]}
-                borderWidth={1}
-                activeOuterRadiusOffset={8}
-                arcLinkLabelsSkipAngle={0}
-                arcLinkLabelsTextColor="#000000"
-                arcLinkLabelsThickness={2}
-                arcLinkLabelsColor={{ from: "color" }}
-                arcLabelsSkipAngle={10}
-                theme={{
-                    labels: {
-                        text: {
-                            fontSize: 14,
-                            fill: "#000000",
-                        },
-                    },
-                    legends: {
-                        text: {
-                            fontSize: 12,
-                            fill: "#000000",
-                        },
-                    },
-                }}
-                onClick={handle.padClick}
-                legends={[
-                    {
-                        anchor: "bottom",
-                        direction: "row",
-                        justify: false,
-                        translateX: 0,
-                        translateY: 56,
-                        itemsSpacing: 0,
-                        itemWidth: 100,
-                        itemHeight: 18,
-                        itemDirection: "left-to-right",
-                        itemOpacity: 1,
-                        symbolSize: 18,
-                        symbolShape: "circle",
-                        effects: [
-                            {
-                                on: "hover",
-                                style: {
-                                    itemTextColor: "olive",
-                                },
-                            },
-                        ],
-                        onClick: handle.legendClick,
-                    },
-                ]}
-            />
-        </div>
-    );
+
+    fetchData();
+  }, []);
+
+  // useEffect(() => {
+  //   const resizeChart = () => {
+  //     if (chartRef.current) {
+  //       const chartInstance = chartRef.current.chartInstance;
+  //       if (chartInstance) {
+  //         chartInstance.resize();
+  //       }
+  //     }
+  //   };
+
+  //   window.addEventListener("resize", resizeChart);
+
+  //   return () => {
+  //     window.removeEventListener("resize", resizeChart);
+  //   };
+  // }, []);
+
+  ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+
+  const options = {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          precision: 0,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "급식 참석율",
+      },
+    },
+  };
+
+  const data = {
+    labels: ["급식 참석", "급식 미참석"],
+    datasets: [
+      {
+        label: "급식",
+        fill: false,
+        data: mealData,
+        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "350px",
+        backgroundColor: "white",
+        // border: "1px solid black",
+        borderRadius: "10px",
+        boxShadow: "1px 1px 6px 1px gray",
+      }}
+    >
+      <Bar ref={chartRef} options={options} data={data} />
+    </div>
+  );
 };
 
 export default Barchart;
