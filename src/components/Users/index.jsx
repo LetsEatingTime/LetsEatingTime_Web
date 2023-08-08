@@ -90,6 +90,7 @@ const Users = () => {
 
   return (
     <div>
+      {/* <Navbar /> */}
       <div className={Style.Nav_Legend}>
         <Flex>
           <h1>학생목록</h1>

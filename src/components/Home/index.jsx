@@ -37,7 +37,7 @@ const Home = () => {
     const accessToken = localStorage.getItem("accessToken");
     CheckLogin(accessToken).then((isTeacher) => {
       if (isTeacher) {
-        console.log("로그인 성공");
+        console.log("Auth Success");
       } else {
         console.log("유효하지 않은 계정");
         Toast.fire({

@@ -44,6 +44,7 @@ div {
   border: none;
   background-color: black;
   border-radius: 3px;
+  text-align: center;
 }
 
 .username {

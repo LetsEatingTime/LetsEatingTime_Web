@@ -6,6 +6,7 @@ import Style from "../../style/UserDetail_style.module.css";
 
 import StudentCard from "../../image/StudentCard.svg";
 import defaultImage from "../../image/defalultImage.png";
+import { Calender } from "../Calender";
 
 export const URL = process.env.REACT_APP_API;
 
@@ -126,6 +127,7 @@ const UserDetail = (props) => {
                 <br />
                 <span>{dinner ? <>🟦</> : <>⬜️</>}</span>
               </div>
+              <Calender />
             </div>
           </div>
         </div>

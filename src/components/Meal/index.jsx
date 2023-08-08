@@ -33,9 +33,7 @@ const Meal = () => {
         const mealRequest = response.data;
         if (mealRequest.status === 200) {
           const mealToday = mealRequest.data;
-          // console.log(mealToday)
           if (mealToday.exists) {
-            // console.log(mealToday.breakfast.menu);
             const breakfastData = `${
               mealToday.breakfast ? mealToday.breakfast.menu.join("\n") : "아침이 없습니다."
             }`;
@@ -59,7 +57,9 @@ const Meal = () => {
       })
       .catch((error) => {
         // console.log(error);
-        
+        setBreakfast("서버 에러");
+        setLunch("서버 에러");
+        setDinner("서버 에러");
       });
   }, []);
   return (
