@@ -104,10 +104,7 @@ const UserDetail = () => {
   };
 
   const handleChange = async (newValue) => {
-<<<<<<< HEAD
-=======
-    console.log(formatDate(newValue));
->>>>>>> jinsoo1004
+    // console.log(formatDate(newValue));
     setValue(newValue);
     const userId = location.state.UserId;
     const URL_UserEat = `${URL}/api/user/meal-entry?id=${userId}&date=${formatDate(newValue)}`;
@@ -122,10 +119,7 @@ const UserDetail = () => {
       // console.log(data);
       if (data.status === 200) {
         const mealTime = data.data;
-<<<<<<< HEAD
-=======
-        console.log(mealTime);
->>>>>>> jinsoo1004
+        // console.log(mealTime);
         if (mealTime) {
           const hasBreakfast = mealTime.some((entry) => entry.info === "breakfast");
           const hasLunch = mealTime.some((entry) => entry.info === "lunch");
