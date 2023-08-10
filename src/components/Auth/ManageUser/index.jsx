@@ -27,7 +27,9 @@ const ManageUser = () => {
             const data = [];
             users.forEach((item) => {
               if (item.user.approvedYn === "Y") {
-                data.push(item);
+                if (item.user.userType === "S") {
+                  data.push(item);
+                }
               }
             });
             setUsers(data);
@@ -219,8 +221,13 @@ const ManageUser = () => {
     <div>
       <div className={Style.Nav_Legend}>
         <div>
-          <h1>유저 목록</h1> <button onClick={handleMealForm} className={Style.FormButton}>일괄 급식 신청 양식</button>{" "}
-          <button onClick={handleMealreq} className={Style.FormButton}>일괄 급식 신청</button>
+          <h1>유저 목록</h1>{" "}
+          <button onClick={handleMealForm} className={Style.FormButton}>
+            일괄 급식 신청 양식
+          </button>{" "}
+          <button onClick={handleMealreq} className={Style.FormButton}>
+            일괄 급식 신청
+          </button>
         </div>
 
         <div className={Style.grade_text} id="grade_1">
