@@ -151,7 +151,7 @@ const ManageUser = () => {
       },
     });
 
-    return response.data; // 적절한 응답 데이터 처리
+    return response.data;
   };
 
   const DownloadForm = async () => {
@@ -197,7 +197,7 @@ const ManageUser = () => {
   const handleMealForm = async () => {
     swalWithBootstrapButtons
       .fire({
-        title: "양식을 다운받으시겠습니다?",
+        title: "양식을 다운받으시겠습니까?",
         icon: "question",
         showCancelButton: true,
         cancelButtonText: "취소",
@@ -219,8 +219,8 @@ const ManageUser = () => {
     <div>
       <div className={Style.Nav_Legend}>
         <div>
-          <h1>유저 목록</h1> <button onClick={handleMealForm}>일괄 급식 신청 양식</button>{" "}
-          <button onClick={handleMealreq}>일괄 급식 신청</button>
+          <h1>유저 목록</h1> <button onClick={handleMealForm} className={Style.FormButton}>일괄 급식 신청 양식</button>{" "}
+          <button onClick={handleMealreq} className={Style.FormButton}>일괄 급식 신청</button>
         </div>
 
         <div className={Style.grade_text} id="grade_1">

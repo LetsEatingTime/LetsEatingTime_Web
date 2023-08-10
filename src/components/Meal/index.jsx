@@ -25,7 +25,7 @@ const Meal = () => {
     const day = String(currentDate.getDate()).padStart(2, "0");
     const today = year + month + day;
 
-    const URL_Meal = `${URL}/openapi/meal?date=${today}`;
+    const URL_Meal = `${URL}/api/openapi/meal?date=${today}`;
     axios
       .get(URL_Meal)
       .then((response) => {
