@@ -212,7 +212,7 @@ const ManageUser = () => {
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           Toast.fire({
             icon: "error",
-            title: "유저삭제 취소",
+            title: "양식다운 취소",
           });
         }
       });
