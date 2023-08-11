@@ -36,6 +36,7 @@ jobs:
           host: ${{ secrets.HOST_ID }}
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
+          port: $${{secrets.PORT}}
           script: |
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
