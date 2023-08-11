@@ -19,7 +19,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          build_args: REACT_APP_API=${{ secrets.REACT_APP_API }}
+
+      - name: Set up environment variable
+        run: echo "REACT_APP_API=${{ secrets.REACT_APP_API }}" >> .env
 
       - name: web docker build and push
         run: |
