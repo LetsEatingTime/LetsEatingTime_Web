@@ -5,10 +5,10 @@ FROM node:alpine as builder
 WORKDIR /usr/src/app
 COPY package.json .
 RUN npm install
-COPY ./ ./
+
+# Set environment variable for React app build
 ARG REACT_APP_API
-ENV REACT_APP_API=$REACT_APP_API
-RUN npm run build
+RUN REACT_APP_API=$REACT_APP_API npm run build
 
 # Production stage
 FROM nginx 
