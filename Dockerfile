@@ -1,16 +1,14 @@
 # Dockerfile
 
-# Build stage
 FROM node:alpine as builder
+ARG REACT_APP_API
+ENV REACT_APP_API=$REACT_APP_API
 WORKDIR /usr/src/app
 COPY package.json .
 RUN npm install
+COPY ./ ./
+RUN npm run build
 
-# Set environment variable for React app build
-ARG REACT_APP_API
-RUN REACT_APP_API=$REACT_APP_API npm run build
-
-# Production stage
 FROM nginx 
 EXPOSE 3000
 COPY ./default.conf /etc/nginx/conf.d/default.conf 
