@@ -27,7 +27,9 @@ const ManageUser = () => {
             const data = [];
             users.forEach((item) => {
               if (item.user.approvedYn === "Y") {
-                data.push(item);
+                if (item.user.userType === "S") {
+                  data.push(item);
+                }
               }
             });
             setUsers(data);
@@ -58,7 +60,7 @@ const ManageUser = () => {
 
   const DeleteUser = async (UserId) => {
     const accessToken = localStorage.getItem("accessToken");
-    const DeleteURL = `${URL}/api/teacher/delete-user?id=${UserId}`;
+    const DeleteURL = `${URL}/api/teacher/delete/user?id=${UserId}`;
     try {
       await axios.delete(DeleteURL, {
         headers: {
@@ -118,10 +120,116 @@ const ManageUser = () => {
         }
       });
   };
+
+  const handleMealreq = async () => {
+    const { value: file } = await Swal.fire({
+      title: "파일을 선택하세요",
+      input: "file",
+      inputAttributes: {
+        accept: "xlsx/*",
+        "aria-label": "Upload your excel file",
+      },
+    });
+
+    if (file) {
+      UploadForm(file);
+      Swal.fire({
+        icon: "success",
+        title: "파일이 업로드 되었습니다",
+      });
+    }
+  };
+
+  const UploadForm = async (file) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const UploadURL = `${URL}/api/teacher/form/upload/meal`;
+
+    const formData = new FormData();
+    formData.append("bundle", file);
+    const response = await axios.post(UploadURL, formData, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "multipart/form-data", // 필수: FormData를 사용할 때 필요한 헤더 설정
+      },
+    });
+
+    return response.data;
+  };
+
+  const DownloadForm = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+    const DownloadURL = `${URL}/api/teacher/form/download/meal`;
+    axios({
+      method: "get",
+      url: DownloadURL,
+      responseType: "blob",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }).then((response) => {
+      const blob = new Blob([response.data]);
+
+      const fileUrl = window.URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = fileUrl;
+      link.style.display = "none";
+
+      const injectFilename = (res) => {
+        const disposition = res.headers["content-disposition"];
+
+        if (disposition) {
+          const fileName = decodeURI(
+            disposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1].replace(/['"]/g, "")
+          );
+          return fileName;
+        } else {
+          return "신청 양식.xlsx";
+        }
+      };
+
+      link.download = injectFilename(response);
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  };
+
+  const handleMealForm = async () => {
+    swalWithBootstrapButtons
+      .fire({
+        title: "양식을 다운받으시겠습니까?",
+        icon: "question",
+        showCancelButton: true,
+        cancelButtonText: "취소",
+        confirmButtonText: "확인",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          DownloadForm();
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Toast.fire({
+            icon: "error",
+            title: "양식다운 취소",
+          });
+        }
+      });
+  };
   return (
     <div>
       <div className={Style.Nav_Legend}>
-        <h1>유저 목록</h1>
+        <div>
+          <h1>유저 목록</h1>{" "}
+          <button onClick={handleMealForm} className={Style.FormButton}>
+            일괄 급식 신청 양식
+          </button>{" "}
+          <button onClick={handleMealreq} className={Style.FormButton}>
+            일괄 급식 신청
+          </button>
+        </div>
+
         <div className={Style.grade_text} id="grade_1">
           <hr className={Style.hr} />
           <div className={Style.users}>

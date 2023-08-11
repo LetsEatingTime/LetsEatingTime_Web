@@ -25,7 +25,7 @@ const Meal = () => {
     const day = String(currentDate.getDate()).padStart(2, "0");
     const today = year + month + day;
 
-    const URL_Meal = `${URL}/openapi/meal?date=${today}`;
+    const URL_Meal = `${URL}/api/openapi/meal?date=${today}`;
     axios
       .get(URL_Meal)
       .then((response) => {
@@ -33,9 +33,7 @@ const Meal = () => {
         const mealRequest = response.data;
         if (mealRequest.status === 200) {
           const mealToday = mealRequest.data;
-          // console.log(mealToday)
           if (mealToday.exists) {
-            // console.log(mealToday.breakfast.menu);
             const breakfastData = `${
               mealToday.breakfast ? mealToday.breakfast.menu.join("\n") : "아침이 없습니다."
             }`;
@@ -58,7 +56,10 @@ const Meal = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
+        setBreakfast("서버 에러");
+        setLunch("서버 에러");
+        setDinner("서버 에러");
       });
   }, []);
   return (
