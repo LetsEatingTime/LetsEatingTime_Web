@@ -108,7 +108,7 @@ const UserApply = () => {
     // console.log(UserId);
     console.log(UserId + "Nclick!");
     const accessToken = localStorage.getItem("accessToken");
-    const DeleteURL = `${URL}/api/teacher/delete-user?id=${UserId}`;
+    const DeleteURL = `${URL}/api/teacher/delete/user?id=${UserId}`;
     try {
       await axios.delete(DeleteURL, {
         headers: {
