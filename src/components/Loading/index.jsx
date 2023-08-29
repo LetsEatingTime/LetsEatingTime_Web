@@ -1,5 +1,5 @@
 import React from "react";
-import { HashLoader } from "react-spinners";
+import { PacmanLoader } from "react-spinners";
 
 const override = {
   display: "flex",
@@ -11,11 +11,11 @@ const override = {
 const Loading = ({ loading }) => {
   return (
     <div>
-      <HashLoader
+      <PacmanLoader
         color="#1c55ff"
         loading={loading}
         cssOverride={override}
-        size={150}
+        size={50}
         speedMultiplier={2}
       />
     </div>
