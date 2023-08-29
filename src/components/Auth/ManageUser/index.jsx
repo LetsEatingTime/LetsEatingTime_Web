@@ -217,6 +217,116 @@ const ManageUser = () => {
         }
       });
   };
+
+  const handleProfileChange = async (e) => {
+    const Id = await e.target.id;
+    const { value: file } = await Swal.fire({
+      title: "파일을 선택하세요",
+      input: "file",
+      inputAttributes: {
+        accept: "png/*",
+        "aria-label": "Upload your png file",
+      },
+    });
+
+    if (file) {
+      ProfileUpload(file, Id).then((data) => {
+        if (data === 200) {
+          Toast.fire({
+            icon: "success",
+            title: "프로필 업로드 성공 !",
+          });
+        } else {
+          Toast.fire({
+            icon: "error",
+            title: "프로필 업로드 실패",
+          });
+        }
+      });
+    }
+  };
+
+  const ProfileUpload = async (file, Id) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const UploadURL = `${URL}/api/teacher/id-photo/upload?id=${Id}`;
+
+    const formData = new FormData();
+    formData.append("image", file);
+    const response = await axios.post(UploadURL, formData, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "multipart/form-data", // 필수: FormData를 사용할 때 필요한 헤더 설정
+      },
+    });
+
+    const data = response.data.status;
+
+    return data;
+  };
+
+  const handleUserInf = async (e) => {
+    const Id = await e.target.id;
+    const { value: formValues } = await Swal.fire({
+      title: "유저 정보 변경",
+      html:
+        '<input id="swal-input1" class="swal2-input" placeholder="이름">' +
+        '<input id="swal-input2" class="swal2-input" placeholder="학년">' +
+        '<input id="swal-input3" class="swal2-input" placeholder="반">' +
+        '<input id="swal-input4" class="swal2-input" placeholder="번호">',
+      focusConfirm: false,
+      preConfirm: () => {
+        return [
+          document.getElementById("swal-input1").value,
+          document.getElementById("swal-input2").value,
+          document.getElementById("swal-input3").value,
+          document.getElementById("swal-input4").value,
+        ];
+      },
+    });
+
+    if (formValues) {
+      UserInfUpload(formValues, Id).then((data) => {
+        if (data === 200) {
+          Toast.fire({
+            icon: "success",
+            title: "유저 정보 변경 성공 !",
+          });
+          // 새로고침
+          window.location.reload();
+        } else {
+          Toast.fire({
+            icon: "error",
+            title: "유저 정보 변경 실패",
+          });
+        }
+      });
+    }
+  };
+
+  const UserInfUpload = async (formValues, Id) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const UploadURL = `${URL}/api/teacher/edit/student`;
+
+
+    const userData = {
+      id:Id,
+      name: formValues[0],
+      grade: formValues[1],
+      className: formValues[2],
+      classNo: formValues[3],
+    }
+
+    const response = await axios.post(UploadURL, userData, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    const data = response.data.status;
+
+    return data;
+  };
+
   return (
     <div>
       <div className={Style.Nav_Legend}>
@@ -239,14 +349,22 @@ const ManageUser = () => {
                   {user.user.grade}학년 {user.user.className}반 {user.user.classNo}번{" "}
                   {user.user.name}
                 </span>
-                {/* <span
-                                    className={Style.N_Btn}
-                                    id={user.user.id}
-                                    onClick={handleNClick}
-                                > */}
-                <button className={Style.N_Btn} id={user.user.id} onClick={handleNClick}>
-                  유저 삭제하기
-                </button>
+                <div>
+                  <button className={Style.N_Btn} id={user.user.id} onClick={handleNClick}>
+                    유저 삭제
+                  </button>
+                  <button className={Style.UserInf_Btn} id={user.user.id} onClick={handleUserInf}>
+                    유저 정보 변경
+                  </button>
+                  <button
+                    className={Style.Profile_Btn}
+                    id={user.user.id}
+                    onClick={handleProfileChange}
+                  >
+                    프로필 사진 변경
+                  </button>
+                </div>
+
                 {/* <div className={Style.meal_status}>{ user }</div> */}
               </div>
             ))}
