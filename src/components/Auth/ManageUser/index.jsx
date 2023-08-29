@@ -217,6 +217,53 @@ const ManageUser = () => {
         }
       });
   };
+
+  const handleProfileChange = async (e) => {
+    const Id = await e.target.id;
+    const { value: file } = await Swal.fire({
+      title: "파일을 선택하세요",
+      input: "file",
+      inputAttributes: {
+        accept: "png/*",
+        "aria-label": "Upload your png file",
+      },
+    });
+
+    if (file) {
+      ProfileUpload(file, Id).then((data) => {
+        if (data === 200) {
+          Toast.fire({
+            icon: "success",
+            title: "프로필 업로드 성공 !",
+          });
+        } else {
+          Toast.fire({
+            icon: "error",
+            title: "프로필 업로드 실패",
+          });
+        }
+      });
+    }
+  };
+
+  const ProfileUpload = async (file, Id) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const UploadURL = `${URL}/api/teacher/id-photo/upload?id=${Id}`;
+
+    const formData = new FormData();
+    formData.append("image", file);
+    const response = await axios.post(UploadURL, formData, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "multipart/form-data", // 필수: FormData를 사용할 때 필요한 헤더 설정
+      },
+    });
+
+    const data = response.data.status;
+
+    return data;
+  };
+
   return (
     <div>
       <div className={Style.Nav_Legend}>
@@ -244,9 +291,19 @@ const ManageUser = () => {
                                     id={user.user.id}
                                     onClick={handleNClick}
                                 > */}
-                <button className={Style.N_Btn} id={user.user.id} onClick={handleNClick}>
-                  유저 삭제하기
-                </button>
+                <div>
+                  <button className={Style.N_Btn} id={user.user.id} onClick={handleNClick}>
+                    유저 삭제하기
+                  </button>
+                  <button
+                    className={Style.Profile_Btn}
+                    id={user.user.id}
+                    onClick={handleProfileChange}
+                  >
+                    프로필 사진 변경
+                  </button>
+                </div>
+
                 {/* <div className={Style.meal_status}>{ user }</div> */}
               </div>
             ))}

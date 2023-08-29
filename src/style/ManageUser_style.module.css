@@ -162,3 +162,22 @@ div {
 .FormButton:not(:disabled):active {
   transform: translateY(.125rem);
 }
+
+.Profile_Btn {
+  float: right;
+  height: 37.5px;
+  margin-top: 20px;
+  margin-right: 20px;
+
+  background-color: #ffffff;
+
+  border: solid 2px #000000;
+  border-radius: 5px;
+}
+
+.Profile_Btn:hover {
+  background-color: #00ff08b3;
+  transition: linear 0.3s;
+  cursor: pointer;
+  color: #000000;
+}
