@@ -264,6 +264,69 @@ const ManageUser = () => {
     return data;
   };
 
+  const handleUserInf = async (e) => {
+    const Id = await e.target.id;
+    const { value: formValues } = await Swal.fire({
+      title: "유저 정보 변경",
+      html:
+        '<input id="swal-input1" class="swal2-input" placeholder="이름">' +
+        '<input id="swal-input2" class="swal2-input" placeholder="학년">' +
+        '<input id="swal-input3" class="swal2-input" placeholder="반">' +
+        '<input id="swal-input4" class="swal2-input" placeholder="번호">',
+      focusConfirm: false,
+      preConfirm: () => {
+        return [
+          document.getElementById("swal-input1").value,
+          document.getElementById("swal-input2").value,
+          document.getElementById("swal-input3").value,
+          document.getElementById("swal-input4").value,
+        ];
+      },
+    });
+
+    if (formValues) {
+      UserInfUpload(formValues, Id).then((data) => {
+        if (data === 200) {
+          Toast.fire({
+            icon: "success",
+            title: "유저 정보 변경 성공 !",
+          });
+          // 새로고침
+          window.location.reload();
+        } else {
+          Toast.fire({
+            icon: "error",
+            title: "유저 정보 변경 실패",
+          });
+        }
+      });
+    }
+  };
+
+  const UserInfUpload = async (formValues, Id) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const UploadURL = `${URL}/api/teacher/edit/student`;
+
+
+    const userData = {
+      id:Id,
+      name: formValues[0],
+      grade: formValues[1],
+      className: formValues[2],
+      classNo: formValues[3],
+    }
+
+    const response = await axios.post(UploadURL, userData, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    const data = response.data.status;
+
+    return data;
+  };
+
   return (
     <div>
       <div className={Style.Nav_Legend}>
@@ -286,14 +349,12 @@ const ManageUser = () => {
                   {user.user.grade}학년 {user.user.className}반 {user.user.classNo}번{" "}
                   {user.user.name}
                 </span>
-                {/* <span
-                                    className={Style.N_Btn}
-                                    id={user.user.id}
-                                    onClick={handleNClick}
-                                > */}
                 <div>
                   <button className={Style.N_Btn} id={user.user.id} onClick={handleNClick}>
-                    유저 삭제하기
+                    유저 삭제
+                  </button>
+                  <button className={Style.UserInf_Btn} id={user.user.id} onClick={handleUserInf}>
+                    유저 정보 변경
                   </button>
                   <button
                     className={Style.Profile_Btn}
