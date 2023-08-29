@@ -275,6 +275,18 @@ const ManageUser = () => {
         '<input id="swal-input4" class="swal2-input" placeholder="번호">',
       focusConfirm: false,
       preConfirm: () => {
+        if (
+          document.getElementById("swal-input1").value === "" ||
+          document.getElementById("swal-input2").value === "" ||
+          document.getElementById("swal-input3").value === "" ||
+          document.getElementById("swal-input4").value === ""
+        ) {
+          Toast.fire({
+            icon: "error",
+            title: "빈칸을 모두 채워주세요",
+          });
+          return false;
+        }
         return [
           document.getElementById("swal-input1").value,
           document.getElementById("swal-input2").value,
@@ -307,14 +319,13 @@ const ManageUser = () => {
     const accessToken = localStorage.getItem("accessToken");
     const UploadURL = `${URL}/api/teacher/edit/student`;
 
-
     const userData = {
-      id:Id,
+      id: Id,
       name: formValues[0],
       grade: formValues[1],
       className: formValues[2],
       classNo: formValues[3],
-    }
+    };
 
     const response = await axios.post(UploadURL, userData, {
       headers: {
