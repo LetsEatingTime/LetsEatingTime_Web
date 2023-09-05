@@ -27,7 +27,6 @@ const Navbar = () => {
     setShowLinks(!showLinks);
   };
   const handleClickUrl = (e) => {
-    // console.log(e.target.id);
     navigate(e.target.id);
   };
   const handleLogout = () => {
@@ -57,15 +56,12 @@ const Navbar = () => {
       <nav>
         <div className="nav-center">
           <div className="nav-header">
-            {/* <img src={logo} className="logo" alt="logo" /> */}
             <button className="nav-toggle" onClick={toggleLinks}>
               <FaBars />
             </button>
           </div>
-          {/* 메뉴버튼 클릭시 목록 보이도록 */}
           <div className="links-container" ref={linksContainerRef}>
             <ul className="links" ref={linksRef}>
-              {/* data에서 Nav목록 가져오기 */}
               {links.map((link) => {
                 const { id, url, text } = link;
                 return (
@@ -76,7 +72,6 @@ const Navbar = () => {
               })}
             </ul>
           </div>
-          {/* 로그아웃 아이콘 가져오기 */}
           <ul className="social-icons">
             {social.map((socialIcon) => {
               const { id, icon } = socialIcon;

@@ -38,7 +38,6 @@ const UserDetail = () => {
         });
         const data = response.data;
         if (data.status === 200) {
-          // const user = data.data;
           setUserData(data.data);
           const mealTime = data.data.mealType;
           if (mealTime) {
@@ -51,11 +50,6 @@ const UserDetail = () => {
             setLunch(false);
             setDinner(false);
           }
-          // (await mealTime.includes("breakfast"))
-          //     ? setBreakfast(true)
-          //     : setBreakfast(false);
-          // (await mealTime.includes("lunch")) ? setLunch(true) : setLunch(false);
-          // (await mealTime.includes("dinner")) ? setDinner(true) : setDinner(false);
 
           const profile = data.data.user.image;
           if (profile === null) {
@@ -63,25 +57,6 @@ const UserDetail = () => {
           } else {
             const profileURL = `${URL}/api/user/image/${profile}`;
             setUserProfile(profileURL);
-            // const axiosConfig = {
-            //     responseType: "blob",
-            //     headers: {
-            //         Authorization: `Bearer ${accessToken}`,
-            //     },
-            // };
-            // await axios
-            //     .get(profileURL, axiosConfig)
-            //     .then((res) => {
-            //         const blobUrl = window.URL.createObjectURL(
-            //             new Blob([res.data], { type: res.headers["content-type"] })
-            //         );
-            //         setUserProfile(blobUrl);
-            //     })
-            //     .catch((err) => {
-            //         console.log(err);
-            //         setUserProfile(defaultImage);
-            //         console.log("이미지 없음");
-            //     });
           }
         } else {
           console.log("서버 에러");
@@ -91,8 +66,6 @@ const UserDetail = () => {
         navigate("/");
       }
     };
-
-    // console.log(mealTime);
     user();
   }, [location, navigate]);
 
@@ -104,7 +77,6 @@ const UserDetail = () => {
   };
 
   const handleChange = async (newValue) => {
-    // console.log(formatDate(newValue));
     setValue(newValue);
     const userId = location.state.UserId;
     const URL_UserEat = `${URL}/api/user/meal-entry?id=${userId}&date=${formatDate(newValue)}`;
@@ -116,10 +88,8 @@ const UserDetail = () => {
         },
       });
       const data = response.data;
-      // console.log(data);
       if (data.status === 200) {
         const mealTime = data.data;
-        // console.log(mealTime);
         if (mealTime) {
           const hasBreakfast = mealTime.some((entry) => entry.info === "breakfast");
           const hasLunch = mealTime.some((entry) => entry.info === "lunch");
@@ -148,10 +118,8 @@ const UserDetail = () => {
           <div className={Style.card}>
             <div className={Style.leftbox}>
               <div className={Style.CardBasicInformation}>
-                {/* <div className={Style.StudentCard}> */}
                 <img className={Style.CardBox} src={StudentCard} alt="ProfileCard" />
                 <img className={Style.CardImage} src={userProfile} alt="Profile" />
-                {/* </div> */}
                 <div className={Style.BaseOfStudent}>
                   <h1 className={Style.UserCardName}>{userData.user.name} </h1>
                   <div className={Style.baseForm}>

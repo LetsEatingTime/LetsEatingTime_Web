@@ -10,10 +10,6 @@ import UserList from "../../hooks/UserList";
 
 const Flex = styled.div`
   height: 100vh;
-  /* margin-left: 10%; */
-  /* justify-content: center;
-    align-items: center;
-    flex-direction: column; */
 `;
 
 const Users = () => {
@@ -36,7 +32,6 @@ const Users = () => {
 
         UserList(accessToken)
           .then((users) => {
-            // console.log(users)
             users.forEach((item) => {
               if (item.user.approvedYn === "Y") {
                 if (item.user.grade === 1) {
@@ -76,8 +71,6 @@ const Users = () => {
         navigate("/login");
       }
     });
-
-    // console.log(Userlist.name)
   }, [navigate]); // 빈 배열을 전달하여 컴포넌트가 처음 렌더링될 때만 실행
 
   const handleUserClick = async (e) => {
@@ -90,7 +83,6 @@ const Users = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div className={Style.Nav_Legend}>
         <Flex>
           <h1>학생목록</h1>
@@ -113,7 +105,6 @@ const Users = () => {
                     {user.user.grade}학년 {user.user.className}반 {user.user.classNo}번{" "}
                     {user.user.name}
                   </span>
-                  {/* <div className={Style.meal_status}>{ user }</div> */}
                 </div>
               ))}
             </div>

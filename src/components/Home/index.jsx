@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import Toast from "../../lib/Alert/Toast";
-// import NavBar from "../NavBar";
 import { CheckLogin } from "../../hooks/CheckLogin";
 import Piechart from "../Chart/Pie";
 import Meal from "../Meal";
@@ -15,21 +14,9 @@ const Grid = styled.div`
   margin: 50px auto 0;
 
   display: grid;
-  /* display: f; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
   grid-template-columns: 1fr 1fr;
   gap: 80px;
 `;
-
-// const Flex = styled.div`
-//   display: flex;
-
-//   width: 60%;
-
-//   margin: 50px auto 0;
-// `;
 
 const Home = () => {
   const navigate = useNavigate();
@@ -74,7 +61,6 @@ const Home = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 textAlign: "center",
-                // margin: "0 auto",
                 backgroundColor: "white",
                 borderRadius: "10px",
                 boxShadow: "1px 1px 6px 1px gray",
