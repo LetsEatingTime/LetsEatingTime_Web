@@ -375,8 +375,6 @@ const ManageUser = () => {
                     프로필 사진 변경
                   </button>
                 </div>
-
-                {/* <div className={Style.meal_status}>{ user }</div> */}
               </div>
             ))}
           </div>

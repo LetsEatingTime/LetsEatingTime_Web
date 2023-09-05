@@ -63,7 +63,6 @@ const SignUp = () => {
     try {
       // 회원가입 성공
       const response = await axios.post(URL, data); // 회원가입 API
-      // console.log(response);
       if (response.status === 200) {
         Toast.fire({
           icon: "success",
@@ -98,7 +97,6 @@ const SignUp = () => {
         <Flex>
           <form className={Style.form} onKeyPress={onKeyPress}>
             <div className={Style.Ang_Text}>회원가입</div>
-            {/* <Reservation /> */}
             <div className={Style.inputs}>
               <input
                 className={Style.input}

@@ -21,7 +21,6 @@ const UserApply = () => {
 
         UserList(accessToken)
           .then((users) => {
-            // console.log(users)
             const data = [];
             users.forEach((item) => {
               if (item.user.approvedYn === "N") {
@@ -57,13 +56,11 @@ const UserApply = () => {
 
   const handleUserClick = async (e) => {
     const UserId = await e.target.id;
-    // console.log(UserId);
     console.log(UserId + "click!");
   };
 
   const handleYClick = async (e) => {
     const UserId = await e.target.id;
-    // console.log(UserId);
     console.log(UserId + "Yclick!");
     const accessToken = localStorage.getItem("accessToken");
 
@@ -79,7 +76,6 @@ const UserApply = () => {
         }
       );
       await UserList(accessToken).then((users) => {
-        // console.log(users)
         const data = [];
         users.forEach((item) => {
           if (item.user.approvedYn === "N") {
@@ -105,7 +101,6 @@ const UserApply = () => {
 
   const handleNClick = async (e) => {
     const UserId = await e.target.id;
-    // console.log(UserId);
     console.log(UserId + "Nclick!");
     const accessToken = localStorage.getItem("accessToken");
     const DeleteURL = `${URL}/api/teacher/delete/user?id=${UserId}`;
@@ -116,7 +111,6 @@ const UserApply = () => {
         },
       });
       await UserList(accessToken).then((users) => {
-        // console.log(users)
         const data = [];
         users.forEach((item) => {
           if (item.user.approvedYn === "N") {
@@ -162,8 +156,6 @@ const UserApply = () => {
                   <span className={Style.Y_Btn} id={user.user.id} onClick={handleYClick}>
                     ✅
                   </span>
-
-                  {/* <div className={Style.meal_status}>{ user }</div> */}
                 </div>
               ))}
             </div>

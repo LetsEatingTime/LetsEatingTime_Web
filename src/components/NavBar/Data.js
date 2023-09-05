@@ -21,11 +21,6 @@ export const links = [
     url: "/admin/apply",
     text: "학생승인",
   },
-  //   {
-  //     id: 5,
-  //     url: '/admin/apply',
-  //     text: '학생승인',
-  //   },
 ];
 
 export const social = [
