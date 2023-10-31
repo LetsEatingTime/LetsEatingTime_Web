@@ -7,7 +7,6 @@ import "./Calendar.css"; // css import
 import Style from "../../style/UserDetail_style.module.css";
 
 import StudentCard from "../../image/StudentCard.svg";
-import defaultImage from "../../image/defalultImage.png";
 
 export const URL = process.env.REACT_APP_API;
 
@@ -15,7 +14,6 @@ const UserDetail = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [userData, setUserData] = useState("");
-  const [userProfile, setUserProfile] = useState("");
 
   const [breakfast, setBreakfast] = useState(false);
   const [lunch, setLunch] = useState(false);
@@ -49,14 +47,6 @@ const UserDetail = () => {
             setBreakfast(false);
             setLunch(false);
             setDinner(false);
-          }
-
-          const profile = data.data.user.image;
-          if (profile === null) {
-            setUserProfile(defaultImage);
-          } else {
-            const profileURL = `${URL}/api/user/image/${profile}`;
-            setUserProfile(profileURL);
           }
         } else {
           console.log("서버 에러");
@@ -119,7 +109,7 @@ const UserDetail = () => {
             <div className={Style.leftbox}>
               <div className={Style.CardBasicInformation}>
                 <img className={Style.CardBox} src={StudentCard} alt="ProfileCard" />
-                <img className={Style.CardImage} src={userProfile} alt="Profile" />
+                <img className={Style.CardImage} src={`${URL}/api/user/image/${userData.user.image}`} alt="Profile" />
                 <div className={Style.BaseOfStudent}>
                   <h1 className={Style.UserCardName}>{userData.user.name} </h1>
                   <div className={Style.baseForm}>
