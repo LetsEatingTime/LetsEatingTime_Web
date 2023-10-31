@@ -145,17 +145,20 @@ const StudentSignUp = () => {
                 onChange={handleNameChange}
               ></input>
               <select className={Style.select} id="input-grade" onChange={handleGradeChange}>
+                <option value="0">학년</option>
                 <option value="1">1학년</option>
                 <option value="2">2학년</option>
                 <option value="3">3학년</option>
               </select>
               <select className={Style.select} id="input-class" onChange={handleClassNameChange}>
+                <option value="0">반</option>
                 <option value="1">1반</option>
                 <option value="2">2반</option>
                 <option value="3">3반</option>
                 <option value="4">4반</option>
               </select>
               <select className={Style.select} id="input-classNo" onChange={handleClassNoChange}>
+                <option value="0">번호</option>
                 <option value="1">1번</option>
                 <option value="2">2번</option>
                 <option value="3">3번</option>

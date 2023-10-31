@@ -113,19 +113,18 @@ const UserDetail = () => {
                 <div className={Style.BaseOfStudent}>
                   <h1 className={Style.UserCardName}>{userData.user.name} </h1>
                   <div className={Style.baseForm}>
-                    <p className={Style.UserCardBasicInformation}>{userData.user.grade} 학년</p>
-                    <p className={Style.UserCardBasicInformation}>{userData.user.className} 반</p>
-                    <p className={Style.UserCardBasicInformation}>{userData.user.classNo} 번</p>
-                    <p className={Style.UserCardBasicInformation}> {userData.user.name}</p>
+                    <p className={Style.UserCardBasicInformation}>{userData.user.grade}학년 </p>
+                    <p className={Style.UserCardBasicInformation}>{userData.user.className}반 </p>
+                    <p className={Style.UserCardBasicInformation}>{userData.user.classNo}번 </p>
                   </div>
                 </div>
               </div>
             </div>
             <div className={Style.rightbox}>
               <div className={Style.User}>
-                <p className={Style.UserGrade}>학년: {userData.user.grade} </p>
-                <p className={Style.UserClass}>반: {userData.user.className} </p>
-                <p className={Style.UserNum}>번호: {userData.user.classNo} </p>
+                <p className={Style.UserGrade}>{userData.user.grade}학년 </p>
+                <p className={Style.UserClass}>{userData.user.className} 반 </p>
+                <p className={Style.UserNum}>{userData.user.classNo}번</p>
               </div>
               <h1 className={Style.UserName}>{userData.user.name} </h1>
               <div className={Style.Didyoueat}>

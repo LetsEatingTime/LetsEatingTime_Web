@@ -71,7 +71,11 @@ const ManageUser = () => {
         // console.log(users)
         const data = [];
         users.forEach((item) => {
-          data.push(item);
+          if (item.user.approvedYn === "Y") {
+            if (item.user.userType === "S") {
+              data.push(item);
+            }
+          }
         });
         setUsers(data);
       });
