@@ -4,6 +4,7 @@ import Loading from "../components/Loading";
 import UserDetail from "../components/UserDetail";
 import UserApply from "../components/Auth/UserApply";
 import ManageUser from "../components/Auth/ManageUser";
+import StudentSignUp from "../components/Auth/StudentSignUp";
 
 const Login = lazy(() => import("../components/Auth/Login"));
 const SignUp = lazy(() => import("../components/Auth/SignUp"));
@@ -18,6 +19,7 @@ const Router = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup/student" element={<StudentSignUp />} />
         <Route path="*" element={<NotFound />} />
 
         <Route path="/" element={<Home />} />
